@@ -1483,7 +1483,7 @@
       }
 
       const handler = PaystackPop.setup({
-        key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your Paystack public key
+        key: 'pk_test_def8d11c7b5a7bb2a93df185068394086383c67c',
         email: email,
         amount: Math.round(total * 100),
         currency: 'GHS',
@@ -1495,8 +1495,33 @@
           ]
         },
         callback: function (response) {
-          const orderId = response.reference;
-          saveOrderAndRedirect({ orderId, email, firstName, lastName, total, method: 'Paystack' });
+          const btn = document.getElementById('placeOrderBtn');
+          const originalText = btn.innerHTML;
+          btn.disabled = true;
+          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="animation:spin 1s linear infinite"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg> Verifying...';
+
+          fetch('/api/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ reference: response.reference })
+          })
+            .then(res => res.json())
+            .then(data => {
+              if (data.success) {
+                const orderId = response.reference;
+                saveOrderAndRedirect({ orderId, email, firstName, lastName, total, method: 'Paystack' });
+              } else {
+                showToast('Payment verification failed. Please contact support.', false);
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+              }
+            })
+            .catch(err => {
+              console.error('Verify error:', err);
+              showToast('Verification error. Please contact support.', false);
+              btn.disabled = false;
+              btn.innerHTML = originalText;
+            });
         },
         onClose: function () {
           showToast('Payment cancelled. You can try again.', false);
