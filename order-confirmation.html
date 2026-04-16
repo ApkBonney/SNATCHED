@@ -17,58 +17,35 @@
       min-height: 100vh;
     }
 
-    /* ── TOP STRIP ── */
-    .top-strip {
-      background: #e78ec4;
-      color: #fff;
-      text-align: center;
-      padding: 10px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
     /* ── HEADER ── */
     header {
-      padding: 20px 40px;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 30px 40px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    header a {
-      font-size: 1.5rem;
-      font-weight: 900;
-      letter-spacing: 6px;
-      text-decoration: none;
-      color: #1a1a1a;
+    header img {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
     }
 
     /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2c1a24 100%);
-      padding: 70px 20px;
+      background: #ffffff;
+      padding: 40px 20px;
       text-align: center;
       position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: radial-gradient(circle at 60% 50%, rgba(231,142,196,0.12) 0%, transparent 70%);
     }
     .checkmark-circle {
-      width: 90px;
-      height: 90px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
-      background: #e78ec4;
+      background: #1a1a1a;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 28px;
+      margin: 0 auto 24px;
       animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
     @keyframes popIn {
@@ -76,20 +53,20 @@
       to { transform: scale(1) rotate(0deg); opacity: 1; }
     }
     .checkmark-circle svg {
-      width: 44px; height: 44px;
+      width: 40px; height: 40px;
       stroke: white; fill: none; stroke-width: 3;
       stroke-linecap: round; stroke-linejoin: round;
     }
     .hero h1 {
-      color: #fff;
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: #1a1a1a;
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
       font-weight: 900;
       letter-spacing: -1px;
       text-transform: uppercase;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
     .hero p {
-      color: #aaa;
+      color: #666;
       font-size: 0.95rem;
       max-width: 420px;
       margin: 0 auto;
@@ -128,7 +105,7 @@
     .order-card-header strong {
       font-size: 0.88rem;
       font-weight: 700;
-      color: #e78ec4;
+      color: #1a1a1a;
     }
     .order-card-body {
       padding: 24px;
@@ -144,7 +121,7 @@
     .detail-row:last-child { border-bottom: none; }
     .detail-row .label { color: #999; font-weight: 500; }
     .detail-row .value { font-weight: 600; color: #1a1a1a; }
-    .detail-row .value.pink { color: #e78ec4; }
+    .detail-row .value.pink { color: #1a1a1a; }
     .detail-row.total {
       padding-top: 18px;
       margin-top: 6px;
@@ -181,8 +158,8 @@
 
     /* Next steps */
     .next-steps {
-      background: #fef0f7;
-      border-left: 4px solid #e78ec4;
+      background: #f9f9f9;
+      border-left: 4px solid #1a1a1a;
       border-radius: 0 8px 8px 0;
       padding: 20px 24px;
       margin-bottom: 36px;
@@ -219,7 +196,7 @@
       transition: all 0.2s;
     }
     .btn-primary:hover {
-      background: #e78ec4;
+      background: #333;
       transform: translateY(-2px);
     }
     .btn-secondary {
@@ -241,8 +218,8 @@
       transition: all 0.2s;
     }
     .btn-secondary:hover {
-      border-color: #e78ec4;
-      color: #e78ec4;
+      border-color: #000;
+      color: #000;
     }
 
     /* Email note */
@@ -257,7 +234,7 @@
       width: 16px; height: 16px;
       vertical-align: middle;
       margin-right: 4px;
-      stroke: #e78ec4;
+      stroke: #000;
     }
 
     /* Footer */
@@ -280,10 +257,10 @@
 </head>
 <body>
 
-  <div class="top-strip">Payment Confirmed — Order Processing</div>
-
   <header>
-    <a href="index.html">SNATCHED</a>
+    <a href="index.html">
+      <img src="images/snatched black.png" alt="SNATCHED">
+    </a>
   </header>
 
   <section class="hero">
@@ -331,7 +308,7 @@
         A confirmation email with your receipt is on its way to your inbox.
         We typically dispatch orders within <strong>1–2 business days</strong>.
         You'll get a follow-up when your package ships. Questions? 
-        <a href="contact.html" style="color:#e78ec4;">Contact us anytime.</a>
+        <a href="contact.html" style="color:#000; font-weight:700;">Contact us anytime.</a>
       </p>
     </div>
 
