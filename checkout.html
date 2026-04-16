@@ -1503,7 +1503,22 @@
           fetch('/api/verify-payment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ reference: response.reference })
+            body: JSON.stringify({
+              reference: response.reference,
+              orderData: {
+                firstName,
+                lastName,
+                email,
+                total,
+                items: getCart(),
+                deliveryMethod: document.querySelector('input[name="deliveryMethod"]:checked')?.value || 'standard',
+                address: {
+                  street: document.getElementById('address').value,
+                  city: document.getElementById('city').value,
+                  region: document.getElementById('region').value,
+                }
+              }
+            })
           })
             .then(res => res.json())
             .then(data => {

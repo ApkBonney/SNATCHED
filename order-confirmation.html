@@ -1,134 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmed — SNATCHED</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background: #fff;
-            color: #1a1a1a;
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-        }
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: #e78ec4;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            font-size: 40px;
-            animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes scaleUp {
-            from { transform: scale(0); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        h1 {
-            font-weight: 900;
-            font-size: 2.5rem;
-            letter-spacing: -1px;
-            margin: 0 0 10px;
-            text-transform: uppercase;
-        }
-        p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .order-card {
-            background: #f9f9f9;
-            border: 1px solid #eee;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            text-align: left;
-        }
-        .order-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-        }
-        .order-row:last-child {
-            margin-bottom: 0;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
-            font-weight: 700;
-        }
-        .btn {
-            display: inline-block;
-            background: #1a1a1a;
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 40px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            transition: all 0.2s;
-        }
-        .btn:hover {
-            background: #e78ec4;
-            transform: translateY(-2px);
-        }
-        .confetti {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmed — SNATCHED</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fff;
+      font-family: 'Inter', sans-serif;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* ── TOP STRIP ── */
+    .top-strip {
+      background: #e78ec4;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 20px 40px;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    header a {
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 6px;
+      text-decoration: none;
+      color: #1a1a1a;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c1a24 100%);
+      padding: 70px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 60% 50%, rgba(231,142,196,0.12) 0%, transparent 70%);
+    }
+    .checkmark-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #e78ec4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    @keyframes popIn {
+      from { transform: scale(0) rotate(-30deg); opacity: 0; }
+      to { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+    .checkmark-circle svg {
+      width: 44px; height: 44px;
+      stroke: white; fill: none; stroke-width: 3;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      color: #aaa;
+      font-size: 0.95rem;
+      max-width: 420px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 50px 20px 80px;
+    }
+
+    /* Order card */
+    .order-card {
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .order-card-header {
+      background: #f9f9f9;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+    }
+    .order-card-header span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #999;
+    }
+    .order-card-header strong {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #e78ec4;
+    }
+    .order-card-body {
+      padding: 24px;
+    }
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f5f5f5;
+      font-size: 0.88rem;
+    }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row .label { color: #999; font-weight: 500; }
+    .detail-row .value { font-weight: 600; color: #1a1a1a; }
+    .detail-row .value.pink { color: #e78ec4; }
+    .detail-row.total {
+      padding-top: 18px;
+      margin-top: 6px;
+      border-top: 2px solid #1a1a1a;
+      font-size: 1rem;
+    }
+    .detail-row.total .label { font-weight: 700; color: #1a1a1a; }
+    .detail-row.total .value { font-size: 1.1rem; font-weight: 900; }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e8f9ef;
+      color: #1a835a;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #2ecc71;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Next steps */
+    .next-steps {
+      background: #fef0f7;
+      border-left: 4px solid #e78ec4;
+      border-radius: 0 8px 8px 0;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .next-steps p {
+      color: #555;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .next-steps strong { color: #1a1a1a; }
+
+    /* CTA buttons */
+    .cta-group {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #1a1a1a;
+      color: #fff;
+      text-decoration: none;
+      padding: 16px 28px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      background: #e78ec4;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      color: #1a1a1a;
+      text-decoration: none;
+      padding: 16px 28px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: #e78ec4;
+      color: #e78ec4;
+    }
+
+    /* Email note */
+    .email-note {
+      text-align: center;
+      margin-top: 40px;
+      color: #bbb;
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+    .email-note svg {
+      width: 16px; height: 16px;
+      vertical-align: middle;
+      margin-right: 4px;
+      stroke: #e78ec4;
+    }
+
+    /* Footer */
+    footer {
+      background: #1a1a1a;
+      padding: 28px 40px;
+      text-align: center;
+    }
+    footer p {
+      color: #555;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 16px 20px; }
+      .hero { padding: 50px 16px; }
+      .cta-group { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="success-icon">✓</div>
-        <h1>Secured.</h1>
-        <p>Thank you for shopping with SNATCHED. Your order has been placed and is being processed.</p>
-        
-        <div class="order-card">
-            <div class="order-row">
-                <span>Order Reference</span>
-                <span id="orderRef" style="color:#e78ec4; font-weight:700;">#-------</span>
-            </div>
-            <div class="order-row">
-                <span>Customer</span>
-                <span id="custName">Guest</span>
-            </div>
-            <div class="order-row">
-                <span>Total Paid</span>
-                <span id="orderTot">GH₵ 0.00</span>
-            </div>
-        </div>
 
-        <a href="index.html" class="btn">Return to Home</a>
-        <p style="font-size: 0.7rem; margin-top: 40px;">Check your inbox for a confirmation email shortly.</p>
+  <div class="top-strip">Payment Confirmed — Order Processing</div>
+
+  <header>
+    <a href="index.html">SNATCHED</a>
+  </header>
+
+  <section class="hero">
+    <div class="checkmark-circle">
+      <svg viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+    <h1>Secured.</h1>
+    <p>Your order has been placed and payment confirmed. We're already on it.</p>
+  </section>
+
+  <main class="main">
+    <div class="order-card">
+      <div class="order-card-header">
+        <span>Order Details</span>
+        <div class="status-badge">
+          <div class="status-dot"></div>
+          Processing
+        </div>
+      </div>
+      <div class="order-card-body">
+        <div class="detail-row">
+          <span class="label">Order Reference</span>
+          <span class="value pink" id="orderRef">#-------</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Customer</span>
+          <span class="value" id="custName">—</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Payment Method</span>
+          <span class="value">Paystack (Card/Mobile)</span>
+        </div>
+        <div class="detail-row total">
+          <span class="label">Total Paid</span>
+          <span class="value pink" id="orderTot">GH₵ 0.00</span>
+        </div>
+      </div>
     </div>
 
-    <script>
-        // Extract data from URL params
-        const params = new URLSearchParams(window.location.search);
-        document.getElementById('orderRef').textContent = '#' + (params.get('orderId') || 'SN' + Date.now().toString().slice(-6));
-        document.getElementById('custName').textContent = params.get('name') || 'Valued Customer';
-        document.getElementById('orderTot').textContent = 'GH₵ ' + (params.get('total') || '0.00');
+    <div class="next-steps">
+      <p>
+        <strong>What happens next?</strong><br>
+        A confirmation email with your receipt is on its way to your inbox.
+        We typically dispatch orders within <strong>1–2 business days</strong>.
+        You'll get a follow-up when your package ships. Questions? 
+        <a href="contact.html" style="color:#e78ec4;">Contact us anytime.</a>
+      </p>
+    </div>
 
-        // Clear local cart just in case
-        localStorage.removeItem('snatched_cart');
-    </script>
+    <div class="cta-group">
+      <a href="store.html" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Keep Shopping
+      </a>
+      <a href="contact.html" class="btn-secondary">Need Help?</a>
+    </div>
+
+    <div class="email-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      A branded receipt has been sent to your email. Check your spam if you don't see it within a few minutes.
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 SNATCHED. Made in Accra, Ghana.</p>
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('orderId') || ('SN' + Date.now().toString().slice(-8).toUpperCase());
+    document.getElementById('orderRef').textContent = '#' + orderId.slice(-8).toUpperCase();
+    document.getElementById('custName').textContent = params.get('name') || 'Valued Customer';
+    document.getElementById('orderTot').textContent = 'GH₵ ' + (params.get('total') || '0.00');
+
+    // Clean up cart
+    localStorage.removeItem('snatched_cart');
+  </script>
 </body>
 </html>
