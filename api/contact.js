@@ -27,42 +27,26 @@ module.exports = async function handler(req, res) {
       from: process.env.RESEND_FROM || 'onboarding@resend.dev',
       to: process.env.SUPPORT_EMAIL,
       reply_to: email,
-      subject: `📩 SNATCHED Contact: ${subject}`,
+      subject: `SNATCHED Inquiry: ${subject}`,
       html: `
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;padding:32px;background:#fff;border:1px solid #eee;">
-
-          <div style="border-left:4px solid #e78ec4;padding-left:16px;margin-bottom:28px;">
-            <h2 style="color:#1e1e1e;font-size:1.3rem;margin:0 0 4px;">New Contact Form Submission</h2>
-            <p style="color:#999;font-size:0.8rem;margin:0;">Hit "Reply" to respond directly to the customer.</p>
+        <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:40px;background:#ffffff;border:1px solid #e0e0e0;">
+          <div style="text-align:center;margin-bottom:32px;">
+            <img src="https://snatched-six.vercel.app/images/snatched%20black.png" alt="SNATCHED" style="max-width:150px;height:auto;display:block;margin:0 auto;">
           </div>
-
-          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;width:130px;">Name</td>
-              <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;font-weight:700;color:#1e1e1e;">${firstName} ${lastName}</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;">Email</td>
-              <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;font-weight:700;color:#e78ec4;"><a href="mailto:${email}" style="color:#e78ec4;">${email}</a></td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;">Order #</td>
-              <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;font-weight:700;color:#1e1e1e;">${orderNumber || '—'}</td>
-            </tr>
-            <tr>
-              <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;">Subject</td>
-              <td style="padding:10px 0;border-bottom:1px solid #f0f0f0;font-weight:700;color:#1e1e1e;">${subject}</td>
-            </tr>
+          <h2 style="color:#000000;font-size:18px;font-weight:700;margin:0 0 8px;letter-spacing:1px;text-transform:uppercase;text-align:center;">New Inquiry</h2>
+          <p style="color:#666666;font-size:13px;margin:0 0 32px;text-align:center;">Reply to this email to respond directly to the customer.</p>
+          
+          <table style="width:100%;border-collapse:collapse;margin-bottom:32px;">
+            <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;width:120px;">Name</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;font-weight:600;color:#000000;font-size:13px;">${firstName} ${lastName}</td></tr>
+            <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Email</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;font-weight:400;font-size:13px;"><a href="mailto:${email}" style="color:#000000;text-decoration:underline;">${email}</a></td></tr>
+            <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Order No.</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#000000;font-size:13px;">${orderNumber || '—'}</td></tr>
+            <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Subject</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#000000;font-size:13px;">${subject}</td></tr>
           </table>
 
-          <div style="background:#f9f9f9;padding:20px 24px;border-radius:4px;">
-            <p style="color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 10px;">Message</p>
-            <p style="color:#1e1e1e;font-size:0.95rem;line-height:1.7;margin:0;white-space:pre-wrap;">${message}</p>
+          <div style="border:1px solid #e0e0e0;padding:24px;">
+            <p style="color:#000000;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;border-bottom:1px solid #000000;padding-bottom:8px;">Message</p>
+            <div style="color:#333333;font-size:13px;line-height:1.8;white-space:pre-wrap;">${message}</div>
           </div>
-
-          <p style="color:#ccc;font-size:0.7rem;margin-top:24px;text-align:center;">
-            Sent from the SNATCHED contact form · Reply directly to this email to respond to the customer
-          </p>
         </div>
       `,
     });
@@ -71,35 +55,53 @@ module.exports = async function handler(req, res) {
     await resend.emails.send({
       from: process.env.RESEND_FROM || 'onboarding@resend.dev',
       to: email,
-      subject: `We've received your message, ${firstName} ✅`,
+      subject: `SNATCHED — We've received your message`,
       html: `
-        <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:560px;margin:0 auto;background:#fff;">
-          <div style="background:linear-gradient(135deg,#e78ec4 0%,#d46b9e 100%);padding:40px;text-align:center;">
-            <h1 style="color:#fff;font-size:2rem;font-weight:900;margin:0;letter-spacing:4px;">SNATCHED</h1>
-          </div>
-          <div style="padding:40px;">
-            <h2 style="color:#1e1e1e;font-size:1.4rem;font-weight:800;margin:0 0 16px;">Message Received, ${firstName}!</h2>
-            <p style="color:#555;font-size:0.95rem;line-height:1.7;margin:0 0 16px;">
-              Thanks for reaching out. We have received your message and will get back to you within <strong>3–5 business days</strong>.
-            </p>
-            <div style="background:#fef0f7;border-left:4px solid #e78ec4;padding:16px 20px;margin:24px 0;">
-              <p style="color:#999;font-size:0.75rem;margin:0 0 4px;text-transform:uppercase;letter-spacing:1px;">Your subject</p>
-              <p style="color:#1e1e1e;font-weight:700;margin:0;">${subject}</p>
+        <!DOCTYPE html>
+        <html>
+        <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+        <body style="margin:0;padding:0;background:#ffffff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+          <div style="max-width:600px;margin:0 auto;background:#ffffff;">
+            
+            <!-- Logo Header -->
+            <div style="padding:40px 0;text-align:center;border-bottom:1px solid #000000;">
+              <img src="https://snatched-six.vercel.app/images/snatched%20black.png" alt="SNATCHED" style="max-width:200px;height:auto;display:block;margin:0 auto;">
             </div>
-            <p style="color:#555;font-size:0.9rem;line-height:1.7;">
-              In the meantime, do not hesitate to browse our latest collection on the store.
-            </p>
-            <div style="text-align:center;margin-top:32px;">
-              <a href="https://snatched.vercel.app/store.html"
-                 style="display:inline-block;background:#1e1e1e;color:#fff;padding:14px 36px;text-decoration:none;font-weight:700;font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;">
-                VISIT STORE
-              </a>
+
+            <!-- Minimalist Title -->
+            <div style="padding:40px 40px 20px;text-align:center;">
+              <h1 style="color:#000000;font-size:24px;font-weight:700;margin:0;letter-spacing:2px;text-transform:uppercase;">Inquiry Received</h1>
+              <p style="color:#666666;font-size:14px;margin:12px 0 0;line-height:1.5;">Hello ${firstName}, we have received your message.</p>
             </div>
+
+            <!-- Details -->
+            <div style="padding:20px 40px;">
+              <div style="border:1px solid #e0e0e0;padding:24px;text-align:center;">
+                <p style="color:#000000;font-size:12px;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px;">Subject Reference</p>
+                <p style="color:#666666;font-size:14px;font-weight:600;margin:0;">${subject}</p>
+              </div>
+
+              <p style="color:#666666;font-size:13px;line-height:1.6;margin:32px 0;text-align:center;">
+                Our support team will review your inquiry and respond within 3–5 business days. We appreciate your patience.
+              </p>
+
+              <div style="text-align:center;">
+                <a href="https://snatched-six.vercel.app/store.html"
+                   style="display:inline-block;background:#000000;color:#ffffff;padding:14px 40px;text-decoration:none;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+                  BROWSE STORE
+                </a>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div style="padding:40px;text-align:center;border-top:1px solid #000000;margin-top:20px;">
+              <p style="color:#000000;font-size:11px;letter-spacing:2px;margin:0 0 8px;text-transform:uppercase;font-weight:700;">SNATCHED</p>
+              <p style="color:#666666;font-size:11px;margin:0;">Made in Accra, Ghana.</p>
+            </div>
+
           </div>
-          <div style="background:#1e1e1e;padding:24px;text-align:center;">
-            <p style="color:#777;font-size:0.75rem;margin:0;">© 2025 SNATCHED. All rights reserved.</p>
-          </div>
-        </div>
+        </body>
+        </html>
       `,
     });
 

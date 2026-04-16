@@ -59,9 +59,9 @@ module.exports = async function handler(req, res) {
 
     const itemsHtml = items.map(item => `
       <tr>
-        <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:0.9rem;color:#1e1e1e;">${item.name}</td>
-        <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:0.9rem;color:#999;text-align:center;">x${item.quantity}</td>
-        <td style="padding:12px 0;border-bottom:1px solid #f0f0f0;font-size:0.9rem;font-weight:700;text-align:right;">GH₵${((parseFloat(item.price)||0) * (parseInt(item.quantity)||1)).toFixed(2)}</td>
+        <td style="padding:16px 0;border-bottom:1px solid #e0e0e0;font-size:13px;color:#000000;">${item.name}</td>
+        <td style="padding:16px 0;border-bottom:1px solid #e0e0e0;font-size:13px;color:#666666;text-align:center;">QTY: ${item.quantity}</td>
+        <td style="padding:16px 0;border-bottom:1px solid #e0e0e0;font-size:13px;font-weight:600;text-align:right;color:#000000;">GH₵${((parseFloat(item.price)||0) * (parseInt(item.quantity)||1)).toFixed(2)}</td>
       </tr>`).join('');
 
     const adminItemsText = items.map(i => `${i.name} (Size: ${i.size || 'OS'}) x${i.quantity} — GH₵${((parseFloat(i.price)||0)*(parseInt(i.quantity)||1)).toFixed(2)}`).join('<br>');
@@ -71,77 +71,72 @@ module.exports = async function handler(req, res) {
       await resend.emails.send({
         from: process.env.RESEND_FROM || 'onboarding@resend.dev',
         to: email,
-        subject: `Your SNATCHED Order is Confirmed 🎀 #${orderId.slice(-8).toUpperCase()}`,
+        subject: `SNATCHED — Order #${orderId.slice(-8).toUpperCase()} Confirmed`,
         html: `
           <!DOCTYPE html>
           <html>
           <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-          <body style="margin:0;padding:0;background:#f5f5f5;font-family:'Helvetica Neue',Arial,sans-serif;">
-            <div style="max-width:600px;margin:0 auto;background:#fff;">
-
-              <!-- Header -->
-              <div style="background:#1e1e1e;padding:40px;text-align:center;">
-                <h1 style="color:#e78ec4;font-size:2rem;font-weight:900;margin:0;letter-spacing:6px;">SNATCHED</h1>
-                <p style="color:#777;font-size:0.75rem;letter-spacing:2px;margin:8px 0 0;text-transform:uppercase;">Order Confirmation</p>
+          <body style="margin:0;padding:0;background:#ffffff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;">
+            <div style="max-width:600px;margin:0 auto;background:#ffffff;">
+              
+              <!-- Logo Header -->
+              <div style="padding:40px 0;text-align:center;border-bottom:1px solid #000000;">
+                <img src="https://snatched-six.vercel.app/images/snatched%20black.png" alt="SNATCHED" style="max-width:200px;height:auto;display:block;margin:0 auto;">
               </div>
 
-              <!-- Hero message -->
-              <div style="background:linear-gradient(135deg,#e78ec4,#d46b9e);padding:32px 40px;text-align:center;">
-                <div style="font-size:2.5rem;margin-bottom:8px;">✓</div>
-                <h2 style="color:#fff;font-size:1.5rem;font-weight:900;margin:0;letter-spacing:1px;">Order Secured!</h2>
-                <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;margin:8px 0 0;">Thanks for shopping with us, ${firstName || 'friend'}.</p>
+              <!-- Minimalist Title -->
+              <div style="padding:40px 40px 20px;text-align:center;">
+                <h1 style="color:#000000;font-size:24px;font-weight:700;margin:0;letter-spacing:2px;text-transform:uppercase;">Order Secured</h1>
+                <p style="color:#666666;font-size:14px;margin:12px 0 0;line-height:1.5;">Thank you for your order, ${firstName || ''}.</p>
               </div>
 
-              <!-- Order details -->
-              <div style="padding:40px;">
-                <table style="width:100%;margin-bottom:28px;border-collapse:collapse;">
-                  <tr>
-                    <td style="padding:8px 0;color:#999;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;">Order Reference</td>
-                    <td style="padding:8px 0;font-weight:700;color:#e78ec4;text-align:right;">#${orderId.slice(-8).toUpperCase()}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;color:#999;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;">Customer</td>
-                    <td style="padding:8px 0;font-weight:600;color:#1e1e1e;text-align:right;">${customerName}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;color:#999;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;">Delivery</td>
-                    <td style="padding:8px 0;font-weight:600;color:#1e1e1e;text-align:right;">${deliveryLabel}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding:8px 0;color:#999;font-size:0.78rem;text-transform:uppercase;letter-spacing:1px;">Address</td>
-                    <td style="padding:8px 0;font-weight:600;color:#1e1e1e;text-align:right;">${address?.street || ''}, ${address?.city || ''}</td>
-                  </tr>
-                </table>
+              <!-- Order summary -->
+              <div style="padding:20px 40px;">
+                <div style="border:1px solid #e0e0e0;padding:24px;">
+                  <table style="width:100%;margin-bottom:24px;border-collapse:collapse;">
+                    <tr>
+                      <td style="padding:6px 0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;width:120px;">Order No.</td>
+                      <td style="padding:6px 0;color:#000000;font-size:13px;font-weight:600;text-align:right;">#${orderId.slice(-8).toUpperCase()}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:6px 0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Delivery</td>
+                      <td style="padding:6px 0;color:#000000;font-size:13px;text-align:right;">${deliveryLabel}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding:6px 0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;vertical-align:top;">Address</td>
+                      <td style="padding:6px 0;color:#000000;font-size:13px;text-align:right;line-height:1.4;">${customerName}<br>${address?.street || ''}<br>${address?.city || ''}</td>
+                    </tr>
+                  </table>
 
-                <!-- Items -->
-                <p style="color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px;">Items Ordered</p>
-                <table style="width:100%;border-collapse:collapse;">
-                  ${itemsHtml}
-                </table>
+                  <!-- Items -->
+                  <p style="color:#000000;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin:0 0 12px;border-bottom:1px solid #000000;padding-bottom:8px;">Order Details</p>
+                  <table style="width:100%;border-collapse:collapse;">
+                    ${itemsHtml}
+                  </table>
 
-                <!-- Total -->
-                <div style="display:flex;justify-content:space-between;padding:16px 0;margin-top:4px;border-top:2px solid #1e1e1e;">
-                  <span style="font-weight:900;font-size:1rem;text-transform:uppercase;letter-spacing:1px;">Total Paid</span>
-                  <span style="font-weight:900;font-size:1rem;color:#e78ec4;">GH₵${parseFloat(total).toFixed(2)}</span>
+                  <!-- Total -->
+                  <div style="display:flex;justify-content:space-between;padding:16px 0 0;margin-top:16px;border-top:1px solid #000000;">
+                    <span style="font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#000000;">Total Paid</span>
+                    <span style="font-weight:700;font-size:14px;color:#000000;">GH₵${parseFloat(total).toFixed(2)}</span>
+                  </div>
                 </div>
 
-                <p style="color:#888;font-size:0.88rem;line-height:1.7;margin:24px 0 32px;">
-                  We're already preparing your order. You'll receive a shipping update once your 
-                  package is on its way. For any questions, just reply to this email.
+                <p style="color:#666666;font-size:13px;line-height:1.6;margin:32px 0;text-align:center;">
+                  Your order is currently being processed. You will receive an update once it has been dispatched.
                 </p>
 
                 <div style="text-align:center;">
                   <a href="https://snatched-six.vercel.app/store.html"
-                     style="display:inline-block;background:#1e1e1e;color:#fff;padding:16px 44px;text-decoration:none;font-weight:700;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;">
-                    SHOP MORE
+                     style="display:inline-block;background:#000000;color:#ffffff;padding:14px 40px;text-decoration:none;font-weight:600;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+                    RETURN TO STORE
                   </a>
                 </div>
               </div>
 
               <!-- Footer -->
-              <div style="background:#1e1e1e;padding:28px 40px;text-align:center;">
-                <p style="color:#555;font-size:0.75rem;margin:0 0 4px;">© 2026 SNATCHED. Made in Accra, Ghana.</p>
-                <p style="color:#444;font-size:0.7rem;margin:0;">Questions? Reply to this email.</p>
+              <div style="padding:40px;text-align:center;border-top:1px solid #000000;margin-top:20px;">
+                <p style="color:#000000;font-size:11px;letter-spacing:2px;margin:0 0 8px;text-transform:uppercase;font-weight:700;">SNATCHED</p>
+                <p style="color:#666666;font-size:11px;margin:0;">Made in Accra, Ghana.</p>
               </div>
 
             </div>
@@ -155,27 +150,32 @@ module.exports = async function handler(req, res) {
         from: process.env.RESEND_FROM || 'onboarding@resend.dev',
         to: process.env.SUPPORT_EMAIL,
         reply_to: email,
-        subject: `🛍️ New Order: #${orderId.slice(-8).toUpperCase()} — GH₵${parseFloat(total).toFixed(2)}`,
+        subject: `SNATCHED — New Order #${orderId.slice(-8).toUpperCase()} — GH₵${parseFloat(total).toFixed(2)}`,
         html: `
-          <div style="font-family:'Helvetica Neue',Arial,sans-serif;max-width:540px;margin:0 auto;padding:32px;background:#fff;border:1px solid #eee;">
-            <h2 style="color:#1e1e1e;font-size:1.3rem;margin:0 0 4px;">🛍️ New Order Received!</h2>
-            <p style="color:#999;font-size:0.8rem;margin:0 0 28px;">Hit "Reply" to contact the customer directly.</p>
+          <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;padding:40px;background:#ffffff;border:1px solid #e0e0e0;">
+            <div style="text-align:center;margin-bottom:32px;">
+              <img src="https://snatched-six.vercel.app/images/snatched%20black.png" alt="SNATCHED" style="max-width:150px;height:auto;display:block;margin:0 auto;">
+            </div>
+            <h2 style="color:#000000;font-size:18px;font-weight:700;margin:0 0 8px;letter-spacing:1px;text-transform:uppercase;text-align:center;">New Order Received</h2>
+            <p style="color:#666666;font-size:13px;margin:0 0 32px;text-align:center;">Reply to this email to contact the customer.</p>
             
-            <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
-              <tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;width:120px;">Order ID</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;font-weight:700;color:#e78ec4;">#${orderId.slice(-8).toUpperCase()}</td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;">Customer</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;font-weight:600;">${customerName}</td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;">Email</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;font-weight:600;"><a href="mailto:${email}" style="color:#e78ec4;">${email}</a></td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;">Address</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;">${address?.street || ''}, ${address?.city || ''}, ${address?.region || ''}</td></tr>
-              <tr><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;">Delivery</td><td style="padding:10px 0;border-bottom:1px solid #f0f0f0;">${deliveryLabel}</td></tr>
-              <tr><td style="padding:10px 0;color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;">Total</td><td style="padding:10px 0;font-weight:900;font-size:1.1rem;color:#1e1e1e;">GH₵${parseFloat(total).toFixed(2)}</td></tr>
+            <table style="width:100%;border-collapse:collapse;margin-bottom:32px;">
+              <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;width:120px;">Order No.</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;font-weight:600;color:#000000;font-size:13px;">#${orderId.slice(-8).toUpperCase()}</td></tr>
+              <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Customer</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;font-weight:400;color:#000000;font-size:13px;">${customerName}</td></tr>
+              <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Email</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;font-weight:400;font-size:13px;"><a href="mailto:${email}" style="color:#000000;text-decoration:underline;">${email}</a></td></tr>
+              <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Address</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#000000;font-size:13px;">${address?.street || ''}, ${address?.city || ''}, ${address?.region || ''}</td></tr>
+              <tr><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#666666;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Delivery</td><td style="padding:12px 0;border-bottom:1px solid #e0e0e0;color:#000000;font-size:13px;">${deliveryLabel}</td></tr>
+              <tr><td style="padding:12px 0;color:#000000;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;">Total Paid</td><td style="padding:12px 0;font-weight:700;font-size:14px;color:#000000;">GH₵${parseFloat(total).toFixed(2)}</td></tr>
             </table>
 
-            <div style="background:#f9f9f9;padding:20px 24px;border-radius:4px;">
-              <p style="color:#999;font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;margin:0 0 12px;">Items</p>
-              ${adminItemsText}
+            <div style="border:1px solid #e0e0e0;padding:24px;">
+              <p style="color:#000000;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin:0 0 16px;border-bottom:1px solid #000000;padding-bottom:8px;">Order Details</p>
+              <div style="color:#333333;font-size:13px;line-height:1.8;">
+                ${adminItemsText}
+              </div>
             </div>
 
-            <p style="color:#ccc;font-size:0.7rem;margin-top:28px;text-align:center;">Sent from SNATCHED · Paystack reference: ${orderId}</p>
+            <p style="color:#999999;font-size:11px;margin-top:32px;text-align:center;text-transform:uppercase;letter-spacing:1px;">Paystack Ref: ${orderId}</p>
           </div>
         `,
       });
