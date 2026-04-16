@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SNATCHED — Lookbook</title>
+  <!-- PostHog Analytics -->
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + " (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_EME9M9cSy9FvfHvcx2gMPkp1H5Dj4YaKufPRsAyon8Tf', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Main wrapper */
+    .main-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header container */
+    .snatched-header {
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 3rem auto;
+      padding: 2rem;
+    }
+
+    /* Logo centered */
+    .logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .logo img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Vertical info stack: time and cart */
+    .info-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .time-row {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      letter-spacing: 0.3px;
+    }
+
+    .datetime-text {
+      font-family: monospace;
+      letter-spacing: 0.5px;
+    }
+
+    .cart-number {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.3px;
+      padding: 4px 8px;
+    }
+
+    .cart-number:hover {
+      color: #e78ec4;
+      transform: scale(1.02);
+    }
+
+    /* Divider line */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 0.25rem auto;
+    }
+
+    /* Pink Hamburger Menu Button */
+    .hamburger-menu {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      cursor: pointer;
+      background: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f0f0f0;
+    }
+
+    .hamburger-menu:hover {
+      transform: scale(1.05);
+      background: #fef0f5;
+    }
+
+    .hamburger-menu span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: #e78ec4;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .hamburger-menu.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+      background: #e78ec4;
+    }
+
+    .hamburger-menu.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-menu.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+      background: #e78ec4;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar-nav {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background: #FFFFFF;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding: 80px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .sidebar-nav.active {
+      left: 0;
+    }
+
+    /* Sidebar logo styling */
+    .sidebar-logo {
+      text-align: center;
+      padding-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #f0f0f0;
+      width: 100%;
+    }
+
+    .sidebar-logo img {
+      max-width: 160px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Sidebar navigation links */
+    .sidebar-nav a {
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #000000;
+      transition: all 0.2s ease;
+      padding: 10px 20px;
+      display: inline-block;
+      text-align: center;
+      letter-spacing: 0.3px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      min-width: 160px;
+      background-color: transparent;
+    }
+
+    .sidebar-nav a:hover {
+      color: #FFFFFF;
+      background-color: #e78ec4;
+      border: 2px solid #e78ec4;
+      transform: scale(1.02);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Lookbook Grid - 3 columns, 3 rows (9 cards) */
+    .lookbook-title {
+      text-align: center;
+      margin: 1rem 0 2rem 0;
+    }
+
+    .lookbook-title h2 {
+      font-size: 1.8rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: black;
+    }
+
+    .lookbook-title .divider {
+      width: 60px;
+      height: 1px;
+      background: #e0e0e0;
+      margin: 1rem auto 0;
+    }
+
+    .lookbook-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .lookbook-item {
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .lookbook-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .lookbook-item__image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #f5f3f0;
+    }
+
+    .lookbook-item__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .lookbook-item:hover .lookbook-item__image img {
+      transform: scale(1.03);
+    }
+
+    /* Fullscreen Slider Modal - Pink Theme */
+    .slider-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #FFFFFF;
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slider-modal.active {
+      display: flex;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #e78ec4 #f0f0f0;
+    }
+
+    .slider-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .slider-container::-webkit-scrollbar-track {
+      background: #f0f0f0;
+    }
+
+    .slider-container::-webkit-scrollbar-thumb {
+      background: #e78ec4;
+      border-radius: 4px;
+    }
+
+    .slider-track {
+      display: inline-flex;
+      height: 100%;
+      align-items: center;
+    }
+
+    .slider-slide {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      /* Auto width based on image size */
+      height: 100vh;
+      flex-shrink: 0;
+    }
+
+    .slider-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: fill;
+      pointer-events: none;
+    }
+
+    /* Pink Close Button */
+    .slider-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      background: #e78ec4;
+      border: none;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 28px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 2001;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .slider-close:hover {
+      transform: scale(1.1);
+      background: #d46ca8;
+    }
+
+    /* Scroll Indicator in Modal */
+    .slider-scroll-indicator {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: #888;
+      font-size: 12px;
+      letter-spacing: 2px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 16px;
+      border-radius: 30px;
+      z-index: 2001;
+      pointer-events: none;
+    }
+
+    .slider-scroll-indicator .arrow-icon {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .slider-scroll-indicator .arrow {
+      width: 16px;
+      height: 16px;
+      border-right: 2px solid #e78ec4;
+      border-bottom: 2px solid #e78ec4;
+      transform: rotate(45deg);
+      animation: bounceHorizontal 1.5s infinite;
+    }
+
+    .slider-scroll-indicator .arrow-left {
+      transform: rotate(225deg);
+      animation: bounceHorizontalLeft 1.5s infinite;
+    }
+
+    @keyframes bounceHorizontal {
+
+      0%,
+      100% {
+        transform: rotate(45deg) translate(0, 0);
+      }
+
+      50% {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+    }
+
+    @keyframes bounceHorizontalLeft {
+
+      0%,
+      100% {
+        transform: rotate(225deg) translate(0, 0);
+      }
+
+      50% {
+        transform: rotate(225deg) translate(5px, 5px);
+      }
+    }
+
+    /* Image Counter */
+    .slider-counter {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(231, 142, 196, 0.9);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: monospace;
+      z-index: 2001;
+    }
+
+    /* Social */
+    .social-under {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .social-under a {
+      color: #000000;
+      font-size: 1.5rem;
+      transition: opacity 0.2s, transform 0.1s;
+      text-decoration: none;
+    }
+
+    .social-under a:hover {
+      color: #e78ec4;
+      opacity: 0.7;
+      transform: scale(0.98);
+    }
+
+    /* Footer */
+    .site-footer-wrapper {
+      background: #fcfbf9;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+
+    .wrapper--full-padded {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer__blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      padding: 3rem 0;
+    }
+
+    .footer__block {
+      flex: 1 1 200px;
+    }
+
+    .footer__block__title {
+      font-size: 14px;
+      margin-bottom: 16px;
+      font-weight: 500;
+      color: #212121;
+    }
+
+    .footer__quicklinks {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer__quicklinks li {
+      margin-bottom: 8px;
+    }
+
+    .footer__quicklinks a {
+      text-decoration: none;
+      color: #636262;
+      font-size: 12px;
+      transition: opacity 0.2s;
+    }
+
+    .footer__quicklinks a:hover {
+      opacity: 0.7;
+    }
+
+    .newsletter-form .field {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ddd;
+      background: white;
+      font-family: inherit;
+    }
+
+    .newsletter-form button {
+      width: 100%;
+      padding: 10px;
+      background: #212121;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .newsletter-form button:hover {
+      background: #000;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-bottom: 2rem;
+      font-size: 11px;
+      color: #8c8a87;
+      border-top: 1px solid #eee;
+      padding-top: 2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .main-wrapper {
+        padding: 1rem;
+      }
+
+      .snatched-header {
+        padding: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .lookbook-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .logo img {
+        max-width: 280px;
+      }
+
+      .footer__blocks {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+      }
+
+      .wrapper--full-padded {
+        padding: 0 1rem;
+      }
+
+      .hamburger-menu {
+        top: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .hamburger-menu span {
+        width: 20px;
+        height: 2px;
+      }
+
+      .lookbook-title h2 {
+        font-size: 1.4rem;
+      }
+
+      .slider-close {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        top: 10px;
+        right: 15px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .lookbook-grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1.5rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Pink Hamburger Menu Button -->
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar-nav" id="sidebarNav">
+    <div class="sidebar-logo">
+      <img src="images/pinksnatchedlogo.png" alt="SNATCHED"
+        onerror="this.src='https://placehold.co/200x60/e78ec4/FFFFFF?text=SNATCHED'">
+    </div>
+    <a href="index.html">Home</a>
+    <a href="store.html">Store</a>
+    <a href="lookbook.html">Lookbook</a>
+    <a href="comingsoon.html">Coming soon</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="main-wrapper">
+
+    <!-- HEADER -->
+    <div class="snatched-header">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/pinksnatchedlogo.png" alt="SNATCHED"
+            onerror="this.src='https://placehold.co/280x90/000000/FFFFFF?text=SNATCHED'">
+        </a>
+      </div>
+      <div class="info-stack">
+        <div class="time-row">
+          <span class="datetime-text" id="ghanaDateTime">--/--/---- --:-- -- GMT</span>
+        </div>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <!-- Lookbook Title
+    <div class="lookbook-title">
+      <h2>LOOKBOOK</h2>
+      <div class="divider"></div>
+    </div> -->
+
+    <!-- Lookbook Grid - 9 cards, 3 per row -->
+    <div class="lookbook-grid" id="lookbookGrid">
+      <!-- Card 1 -->
+      <div class="lookbook-item" data-index="0">
+        <div class="lookbook-item__image">
+          <img src="images/fit1.jpg" alt="Lookbook 1" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+1'">
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="lookbook-item" data-index="1">
+        <div class="lookbook-item__image">
+          <img src="images/fit2.jpg" alt="Lookbook 2" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+2'">
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="lookbook-item" data-index="2">
+        <div class="lookbook-item__image">
+          <img src="images/fit4.jpg" alt="Lookbook 3" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+3'">
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="lookbook-item" data-index="3">
+        <div class="lookbook-item__image">
+          <img src="images/fit2hover.jpg" alt="Lookbook 4" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+4'">
+        </div>
+      </div>
+      <!-- Card 5 -->
+      <div class="lookbook-item" data-index="4">
+        <div class="lookbook-item__image">
+          <img src="images/fit6.jpg" alt="Lookbook 5" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+5'">
+        </div>
+      </div>
+      <!-- Card 6 -->
+      <div class="lookbook-item" data-index="5">
+        <div class="lookbook-item__image">
+          <img src="images/fit3hover.jpg" alt="Lookbook 6" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+6'">
+        </div>
+      </div>
+      <!-- Card 7 -->
+      <div class="lookbook-item" data-index="6">
+        <div class="lookbook-item__image">
+          <img src="images/fit1hover.jpg" alt="Lookbook 7" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+7'">
+        </div>
+      </div>
+      <!-- Card 8 -->
+      <div class="lookbook-item" data-index="7">
+        <div class="lookbook-item__image">
+          <img src="images/fit4hover.jpg" alt="Lookbook 8" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+8'">
+        </div>
+      </div>
+      <!-- Card 9 -->
+      <div class="lookbook-item" data-index="8">
+        <div class="lookbook-item__image">
+          <img src="images/fit5.jpg" alt="Lookbook 9" loading="lazy"
+            onerror="this.src='https://placehold.co/600x800/f5f3f0/cccccc?text=Look+9'">
+        </div>
+      </div>
+    </div>
+
+    <!-- Social -->
+    <div class="social-under">
+      <a href="https://www.instagram.com/olaoluslawn/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Fullscreen Slider Modal -->
+  <div class="slider-modal" id="sliderModal">
+    <button class="slider-close" id="sliderClose">✕</button>
+    <div class="slider-container" id="sliderContainer">
+      <div class="slider-track" id="sliderTrack">
+        <!-- Images will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer-wrapper">
+    <div class="wrapper--full-padded">
+      <div class="footer__blocks">
+        <div class="footer__block">
+          <h3 class="footer__block__title">Shop</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="#">Caps</a></li>
+            <li><a href="#">T-shirts</a></li>
+            <li><a href="#">Shirts</a></li>
+            <li><a href="#">Jackets</a></li>
+            <li><a href="#">Jeans & Pants</a></li>
+          </ul>
+        </div>
+        <div class="footer__block">
+          <h3 class="footer__block__title">Help</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Shipping & handling</a></li>
+          </ul>
+        </div>
+        <div class="footer__block">
+          <h3 class="footer__block__title">Snatched</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+        <div class="footer__block">
+          <h3 class="footer__block__title">Join something real</h3>
+          <div class="rte">
+            <p>Be the first to get access to all new releases.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" placeholder="Email" class="field" required>
+            <button type="submit">Sign up.</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        © SNATCHED 2026. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Update Ghana date and time
+      function updateGhanaDateTime() {
+        const dateTimeSpan = document.getElementById('ghanaDateTime');
+        if (!dateTimeSpan) return;
+
+        try {
+          const now = new Date();
+          const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Africa/Accra',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+          });
+          const timeFormatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Africa/Accra',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          });
+          const formattedDate = dateFormatter.format(now);
+          let formattedTime = timeFormatter.format(now).replace(/\s+/g, ' ').trim();
+          dateTimeSpan.textContent = `${formattedDate} ${formattedTime} GMT`;
+        } catch (err) {
+          const now = new Date();
+          const day = now.getUTCDate().toString().padStart(2, '0');
+          const month = (now.getUTCMonth() + 1).toString().padStart(2, '0');
+          const year = now.getUTCFullYear();
+          const formattedDate = `${day}/${month}/${year}`;
+          let hours = now.getUTCHours();
+          const minutes = now.getUTCMinutes().toString().padStart(2, '0');
+          const ampm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12;
+          hours = hours ? hours : 12;
+          const formattedTime = `${hours}:${minutes} ${ampm}`;
+          dateTimeSpan.textContent = `${formattedDate} ${formattedTime} GMT`;
+        }
+      }
+
+      updateGhanaDateTime();
+      setInterval(updateGhanaDateTime, 1000);
+
+      // Cart counter functionality
+      let cartCount = 0;
+      const cartElement = document.getElementById('cartNumber');
+
+      function updateCartDisplay() {
+        if (cartElement) {
+          cartElement.textContent = `Cart (${cartCount})`;
+        }
+      }
+
+      if (cartElement) {
+        cartElement.addEventListener('click', () => {
+          cartCount++;
+          updateCartDisplay();
+        });
+      }
+
+      updateCartDisplay();
+
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburgerMenu');
+      const sidebar = document.getElementById('sidebarNav');
+      const overlay = document.getElementById('overlay');
+
+      function toggleMenu() {
+        hamburger.classList.toggle('active');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+
+      // Newsletter form submission
+      const newsletterForm = document.getElementById('newsletter-form');
+      if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = newsletterForm.querySelector('input').value;
+          if (email) {
+            alert(`Thanks for subscribing! (${email})`);
+            newsletterForm.reset();
+          }
+        });
+      }
+
+      // ========== FULLSCREEN SLIDER ==========
+      const lookbookItems = document.querySelectorAll('.lookbook-item');
+      const sliderModal = document.getElementById('sliderModal');
+      const sliderContainer = document.getElementById('sliderContainer');
+      const sliderTrack = document.getElementById('sliderTrack');
+      const sliderClose = document.getElementById('sliderClose');
+      const sliderCounter = document.getElementById('sliderCounter');
+      const scrollIndicator = document.getElementById('scrollIndicator');
+
+      let images = [];
+      let currentIndex = 0;
+
+      // Collect all image sources from lookbook items
+      lookbookItems.forEach((item) => {
+        const img = item.querySelector('img');
+        if (img) {
+          images.push(img.src);
+        }
+      });
+
+      // Build slider track with all images
+      function buildSlider() {
+        sliderTrack.innerHTML = '';
+        images.forEach((src, idx) => {
+          const slide = document.createElement('div');
+          slide.className = 'slider-slide';
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = `Lookbook ${idx + 1}`;
+          slide.appendChild(img);
+          sliderTrack.appendChild(slide);
+        });
+      }
+
+      // Open slider at specific index
+      function openSlider(index) {
+        currentIndex = index;
+        buildSlider();
+        sliderModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Scroll to the selected image
+        setTimeout(() => {
+          const slideWidth = sliderContainer.clientWidth;
+          sliderContainer.scrollLeft = currentIndex * slideWidth;
+        }, 100);
+
+        updateCounter();
+
+        // Hide scroll indicator after 3 seconds
+        if (scrollIndicator) {
+          scrollIndicator.style.opacity = '1';
+          setTimeout(() => {
+            if (scrollIndicator && sliderModal.classList.contains('active')) {
+              scrollIndicator.style.opacity = '0';
+            }
+          }, 3000);
+        }
+      }
+
+      function closeSlider() {
+        sliderModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      function updateCounter() {
+        if (sliderCounter) {
+          sliderCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+      }
+
+      // Update counter on scroll
+      function updateCurrentIndexOnScroll() {
+        if (!sliderContainer) return;
+        const slideWidth = sliderContainer.clientWidth;
+        const scrollPosition = sliderContainer.scrollLeft;
+        const newIndex = Math.round(scrollPosition / slideWidth);
+        if (newIndex !== currentIndex && newIndex >= 0 && newIndex < images.length) {
+          currentIndex = newIndex;
+          updateCounter();
+        }
+      }
+
+      // Add click event to each lookbook item
+      lookbookItems.forEach((item, idx) => {
+        item.addEventListener('click', () => {
+          openSlider(idx);
+        });
+      });
+
+      // Close button
+      if (sliderClose) {
+        sliderClose.addEventListener('click', closeSlider);
+      }
+
+      // Scroll event to update counter
+      if (sliderContainer) {
+        sliderContainer.addEventListener('scroll', () => {
+          requestAnimationFrame(updateCurrentIndexOnScroll);
+        });
+
+        // Resize event to maintain correct scroll position
+        window.addEventListener('resize', () => {
+          if (sliderModal.classList.contains('active')) {
+            const slideWidth = sliderContainer.clientWidth;
+            sliderContainer.scrollLeft = currentIndex * slideWidth;
+          }
+        });
+      }
+
+      // Close on ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sliderModal.classList.contains('active')) {
+          closeSlider();
+        }
+      });
+
+      // Hide scroll indicator after user scrolls
+      if (sliderContainer) {
+        let scrollTimeout;
+        sliderContainer.addEventListener('scroll', () => {
+          if (scrollIndicator) {
+            scrollIndicator.style.opacity = '0';
+            clearTimeout(scrollTimeout);
+          }
+        });
+      }
+
+    })();
+  </script>
+
+</body>
+
+</html>

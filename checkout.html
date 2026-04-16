@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNATCHED — Checkout | Secure Payment</title>
+  <meta name="description"
+    content="Complete your SNATCHED order. Secure checkout with Paystack. Premium streetwear delivered across Ghana.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="checkout.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <!-- PostHog Analytics -->
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + " (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_EME9M9cSy9FvfHvcx2gMPkp1H5Dj4YaKufPRsAyon8Tf', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      color: #1a1a1a;
+    }
+
+    /* ── HEADER ── */
+    .checkout-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .checkout-header .back-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .checkout-header .back-link:hover {
+      color: #e78ec4;
+    }
+
+    .checkout-header .back-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .checkout-header .header-logo img {
+      max-width: 140px;
+      height: auto;
+    }
+
+    .checkout-header .secure-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: #888;
+    }
+
+    .checkout-header .secure-badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: #4caf76;
+      fill: none;
+    }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar {
+      background: #f9f9f9;
+      border-bottom: 1px solid #f0f0f0;
+      padding: 12px 40px;
+    }
+
+    .progress-steps {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: #bbb;
+      font-weight: 500;
+    }
+
+    .step.active {
+      color: #e78ec4;
+    }
+
+    .step.done {
+      color: #4caf76;
+    }
+
+    .step-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .step.active .step-num {
+      background: #e78ec4;
+      color: white;
+    }
+
+    .step.done .step-num {
+      background: #4caf76;
+      color: white;
+    }
+
+    .step-line {
+      flex: 1;
+      height: 1px;
+      background: #eee;
+      margin: 0 10px;
+    }
+
+    /* ── LAYOUT ── */
+    .checkout-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 50px;
+      align-items: start;
+    }
+
+    /* ── LEFT: FORM ── */
+    .checkout-form-section h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0f0f0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .checkout-form-section h2 span {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #e78ec4;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: #1a1a1a;
+      background: #fff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #e78ec4;
+      box-shadow: 0 0 0 3px rgba(231, 142, 196, 0.12);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .form-section-block {
+      margin-bottom: 32px;
+    }
+
+    /* Delivery options */
+    .delivery-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .delivery-card {
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .delivery-card:hover {
+      border-color: #e78ec4;
+      background: #fef7fc;
+    }
+
+    .delivery-card.selected {
+      border-color: #e78ec4;
+      background: #fef0f7;
+    }
+
+    .delivery-card input[type="radio"] {
+      display: none;
+    }
+
+    .delivery-icon {
+      font-size: 1.4rem;
+    }
+
+    .delivery-info {
+      flex: 1;
+    }
+
+    .delivery-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .delivery-price {
+      font-size: 0.78rem;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    .delivery-time {
+      font-size: 0.72rem;
+      color: #aaa;
+    }
+
+    /* Payment methods */
+    .payment-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .payment-card {
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .payment-card:hover {
+      border-color: #e78ec4;
+      background: #fef7fc;
+    }
+
+    .payment-card.selected {
+      border-color: #e78ec4;
+      background: #fef0f7;
+    }
+
+    .payment-card input[type="radio"] {
+      display: none;
+    }
+
+    .payment-logo {
+      width: 48px;
+      height: 30px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+    }
+
+    .payment-logo.paystack {
+      background: #011B33;
+      color: #fff;
+    }
+
+    .payment-logo.cod {
+      background: #f5f3f0;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .payment-details {
+      flex: 1;
+    }
+
+    .payment-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .payment-desc {
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    /* Submit button */
+    .place-order-btn {
+      width: 100%;
+      padding: 16px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .place-order-btn:hover {
+      background: #e78ec4;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(231, 142, 196, 0.3);
+    }
+
+    .place-order-btn:active {
+      transform: translateY(0);
+    }
+
+    .place-order-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    .place-order-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .trust-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 14px;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      color: #aaa;
+    }
+
+    .trust-item svg {
+      width: 13px;
+      height: 13px;
+      stroke: #4caf76;
+      fill: none;
+    }
+
+    /* ── RIGHT: ORDER SUMMARY ── */
+    .order-summary {
+      background: #fafafa;
+      border: 1px solid #f0f0f0;
+      border-radius: 12px;
+      padding: 28px;
+      position: sticky;
+      top: 90px;
+    }
+
+    .order-summary h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .order-summary h3 .item-count {
+      background: #e78ec4;
+      color: white;
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    /* Summary items */
+    .summary-items {
+      margin-bottom: 20px;
+    }
+
+    .summary-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid #efefef;
+    }
+
+    .summary-item:last-child {
+      border-bottom: none;
+    }
+
+    .summary-img-wrap {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .summary-img {
+      width: 58px;
+      height: 72px;
+      object-fit: fill;
+      border-radius: 4px;
+      background: #f5f3f0;
+    }
+
+    .summary-qty-badge {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background: #e78ec4;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .summary-item-info {
+      flex: 1;
+    }
+
+    .summary-item-name {
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .summary-item-size {
+      font-size: 0.72rem;
+      color: #999;
+      margin-top: 3px;
+    }
+
+    .summary-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .s-qty-btn {
+      width: 20px;
+      height: 20px;
+      background: #eee;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .s-qty-btn:hover {
+      background: #e78ec4;
+      color: white;
+    }
+
+    .s-qty-val {
+      font-size: 0.8rem;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .s-remove-btn {
+      background: none;
+      border: none;
+      font-size: 0.7rem;
+      color: #ccc;
+      cursor: pointer;
+      margin-left: 4px;
+      transition: color 0.2s;
+    }
+
+    .s-remove-btn:hover {
+      color: #e74c3c;
+    }
+
+    .summary-price {
+      font-size: 0.88rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* Promo code */
+    .promo-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .promo-input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .promo-input:focus {
+      outline: none;
+      border-color: #e78ec4;
+    }
+
+    .promo-apply {
+      padding: 10px 16px;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background 0.2s;
+    }
+
+    .promo-apply:hover {
+      background: #e78ec4;
+    }
+
+    .promo-message {
+      font-size: 0.75rem;
+      margin-top: -12px;
+      margin-bottom: 14px;
+    }
+
+    .promo-message.success {
+      color: #4caf76;
+    }
+
+    .promo-message.error {
+      color: #e74c3c;
+    }
+
+    /* Totals */
+    .summary-totals {
+      border-top: 1px solid #e8e8e8;
+      padding-top: 14px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.83rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .total-row.discount {
+      color: #4caf76;
+    }
+
+    .total-row.grand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      border-top: 1px solid #e8e8e8;
+      padding-top: 12px;
+      margin-top: 4px;
+    }
+
+    /* Empty bag notice */
+    .empty-bag-notice {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .empty-bag-notice svg {
+      width: 48px;
+      height: 48px;
+      stroke: #ddd;
+      fill: none;
+      margin-bottom: 12px;
+    }
+
+    .empty-bag-notice p {
+      color: #999;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .empty-bag-notice a {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #1a1a1a;
+      color: white;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .empty-bag-notice a:hover {
+      background: #e78ec4;
+    }
+
+    /* ── SUGGESTED PRODUCTS ── */
+    .suggested-section {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .suggested-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .suggested-header h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .suggested-header a {
+      font-size: 0.78rem;
+      color: #e78ec4;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #e78ec4;
+      transition: opacity 0.2s;
+    }
+
+    .suggested-header a:hover {
+      opacity: 0.7;
+    }
+
+    .suggested-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .suggested-card {
+      cursor: pointer;
+      transition: transform 0.2s;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .suggested-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .suggested-card .s-img-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: #f5f3f0;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .suggested-card .s-img-wrap img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      transition: opacity 0.3s;
+    }
+
+    .suggested-card .s-img-wrap .s-primary {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .suggested-card .s-img-wrap .s-hover {
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .suggested-card:hover .s-img-wrap .s-primary {
+      opacity: 0;
+    }
+
+    .suggested-card:hover .s-img-wrap .s-hover {
+      opacity: 1;
+    }
+
+    .s-card-name {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .s-card-price {
+      font-size: 0.82rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .s-add-btn {
+      display: block;
+      width: 100%;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      padding: 9px 0;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+      font-family: inherit;
+      margin-top: auto;
+    }
+
+    .s-add-btn:hover {
+      background: #e78ec4;
+      transform: translateY(-1px);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    /* ── TOAST ── */
+    #checkoutToast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #1a1a1a;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    #checkoutToast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    #checkoutToast.pink {
+      background: #e78ec4;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer-wrapper {
+      background: #fcfbf9;
+      border-top: 1px solid #eee;
+    }
+
+    .wrapper--full-padded {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer__blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      padding: 3rem 0;
+    }
+
+    .footer__block {
+      flex: 1 1 180px;
+    }
+
+    .footer__block__title {
+      font-size: 13px;
+      margin-bottom: 14px;
+      font-weight: 600;
+      color: #212121;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer__quicklinks {
+      list-style: none;
+    }
+
+    .footer__quicklinks li {
+      margin-bottom: 8px;
+    }
+
+    .footer__quicklinks a {
+      text-decoration: none;
+      color: #636262;
+      font-size: 12px;
+      transition: color 0.2s;
+    }
+
+    .footer__quicklinks a:hover {
+      color: #e78ec4;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 11px;
+      color: #8c8a87;
+      border-top: 1px solid #eee;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1000px) {
+      .checkout-layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .order-summary {
+        position: static;
+      }
+
+      .suggested-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .checkout-header {
+        padding: 12px 16px;
+      }
+
+      .checkout-header .secure-badge {
+        display: none;
+      }
+
+      .progress-bar {
+        padding: 10px 16px;
+      }
+
+      .checkout-layout {
+        padding: 24px 16px 40px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .delivery-options {
+        grid-template-columns: 1fr;
+      }
+
+      .suggested-section {
+        padding: 0 16px;
+      }
+
+      .suggested-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .order-summary {
+        padding: 20px 16px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .suggested-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="checkout-header">
+    <a href="store.html" class="back-link">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>
+      Continue Shopping
+    </a>
+    <div class="header-logo">
+      <div class="sidebar-logo">
+        <img src="images/pinksnatchedlogo.png" alt="SNATCHED"
+          onerror="this.src='https://placehold.co/200x60/e78ec4/FFFFFF?text=SNATCHED'">
+      </div>
+    </div>
+    <div class="secure-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+      </svg>
+      Secure Checkout
+    </div>
+  </header>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar">
+    <div class="progress-steps">
+      <div class="step done"><span class="step-num">✓</span> Bag</div>
+      <div class="step-line"></div>
+      <div class="step active"><span class="step-num">2</span> Checkout</div>
+      <div class="step-line"></div>
+      <div class="step"><span class="step-num">3</span> Confirmation</div>
+    </div>
+  </div>
+
+  <!-- MAIN LAYOUT -->
+  <div class="checkout-layout">
+
+    <!-- LEFT: FORM -->
+    <div class="checkout-form-section">
+
+      <!-- Contact Info -->
+      <div class="form-section-block">
+        <h2><span></span>Contact Information</h2>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Ama" required autocomplete="given-name">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Mensah" required autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="+233 XX XXX XXXX" required autocomplete="tel">
+        </div>
+      </div>
+
+      <!-- Delivery Info -->
+      <div class="form-section-block">
+        <h2><span></span>Delivery Address</h2>
+        <div class="form-group">
+          <label for="address">Street Address *</label>
+          <input type="text" id="address" name="address" placeholder="14 Ring Road, East Legon" required
+            autocomplete="street-address">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City *</label>
+            <select id="city" name="city" required>
+              <option value="">Select city</option>
+              <option value="Accra">Accra</option>
+              <option value="Kumasi">Kumasi</option>
+              <option value="Tamale">Tamale</option>
+              <option value="Takoradi">Takoradi</option>
+              <option value="Cape Coast">Cape Coast</option>
+              <option value="Sunyani">Sunyani</option>
+              <option value="Ho">Ho</option>
+              <option value="Koforidua">Koforidua</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="region">Region *</label>
+            <select id="region" name="region" required>
+              <option value="">Select region</option>
+              <option value="Greater Accra">Greater Accra</option>
+              <option value="Ashanti">Ashanti</option>
+              <option value="Northern">Northern</option>
+              <option value="Western">Western</option>
+              <option value="Central">Central</option>
+              <option value="Eastern">Eastern</option>
+              <option value="Volta">Volta</option>
+              <option value="Bono">Bono</option>
+              <option value="Savannah">Savannah</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="landmark">Nearest Landmark (optional)</label>
+          <input type="text" id="landmark" name="landmark" placeholder="e.g. Near Accra Mall">
+        </div>
+        <div class="form-group">
+          <label for="notes">Order Notes (optional)</label>
+          <textarea id="notes" name="notes" placeholder="Any special instructions for delivery..."></textarea>
+        </div>
+      </div>
+
+      <!-- Delivery Method -->
+      <div class="form-section-block">
+        <h2><span></span>Delivery Method</h2>
+        <div class="delivery-options">
+          <label class="delivery-card selected" id="deliveryCard1">
+            <input type="radio" name="deliveryMethod" value="standard" checked>
+            <div class="delivery-icon">🚚</div>
+            <div class="delivery-info">
+              <div class="delivery-name">Standard</div>
+              <div class="delivery-price">GH₵20</div>
+              <div class="delivery-time">2–4 business days</div>
+            </div>
+          </label>
+          <label class="delivery-card" id="deliveryCard2">
+            <input type="radio" name="deliveryMethod" value="express">
+            <div class="delivery-icon">⚡</div>
+            <div class="delivery-info">
+              <div class="delivery-name">Express</div>
+              <div class="delivery-price">GH₵50</div>
+              <div class="delivery-time">Same/next day (Accra)</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="form-section-block">
+        <h2><span></span>Payment Method</h2>
+        <div class="payment-methods">
+          <label class="payment-card selected" id="payCard1">
+            <input type="radio" name="paymentMethod" value="paystack" checked>
+            <div class="payment-logo paystack">PAY</div>
+            <div class="payment-details">
+              <div class="payment-name">Paystack</div>
+              <div class="payment-desc">Card, Mobile Money, USSD & more</div>
+            </div>
+          </label>
+          <label class="payment-card" id="payCard2">
+            <input type="radio" name="paymentMethod" value="cod">
+            <div class="payment-logo cod">💵</div>
+            <div class="payment-details">
+              <div class="payment-name">Cash on Delivery</div>
+              <div class="payment-desc">Pay when your order arrives</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Place Order -->
+      <button class="place-order-btn" id="placeOrderBtn" onclick="handlePlaceOrder()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        Place Order
+      </button>
+
+      <div class="trust-badges">
+        <div class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+          </svg>
+          Secure
+        </div>
+        <div class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+          </svg>
+          Free Returns
+        </div>
+        <div class="trust-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+          </svg>
+          Ghana Payments
+        </div>
+      </div>
+    </div><!-- /left -->
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <aside class="order-summary" id="orderSummaryBox">
+      <h3>
+        Your Bag
+        <span class="item-count" id="summaryCount">0</span>
+      </h3>
+
+      <div class="summary-items" id="summaryItemsList">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Promo Code -->
+      <div class="promo-row">
+        <input type="text" class="promo-input" id="promoInput" placeholder="Promo code">
+        <button class="promo-apply" onclick="applyPromo()">Apply</button>
+      </div>
+      <div class="promo-message" id="promoMsg" style="display:none;"></div>
+
+      <!-- Totals -->
+      <div class="summary-totals">
+        <div class="total-row"><span>Subtotal</span><span id="summarySubtotal">GH₵0.00</span></div>
+        <div class="total-row" id="deliveryRow"><span>Delivery</span><span id="summaryDelivery">GH₵20.00</span></div>
+        <div class="total-row discount" id="discountRow" style="display:none;"><span>Discount</span><span
+            id="summaryDiscount">-GH₵0.00</span></div>
+        <div class="total-row grand"><span>Total</span><span id="summaryTotal">GH₵0.00</span></div>
+      </div>
+    </aside>
+
+  </div><!-- /checkout-layout -->
+
+  <!-- DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- SUGGESTED PRODUCTS -->
+  <section class="suggested-section">
+    <div class="suggested-header">
+      <h2>You Might Also Like</h2>
+      <a href="store.html">View All →</a>
+    </div>
+    <div class="suggested-grid" id="suggestedGrid">
+      <!-- Rendered by JS -->
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer-wrapper">
+    <div class="wrapper--full-padded">
+      <div class="footer__blocks">
+        <div class="footer__block">
+          <h3 class="footer__block__title">Shop</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="store.html">All Products</a></li>
+            <li><a href="#">Caps</a></li>
+            <li><a href="#">Hoodies</a></li>
+            <li><a href="#">Jackets</a></li>
+          </ul>
+        </div>
+        <div class="footer__block">
+          <h3 class="footer__block__title">Help</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Returns Policy</a></li>
+            <li><a href="#">Shipping Info</a></li>
+          </ul>
+        </div>
+        <div class="footer__block">
+          <h3 class="footer__block__title">SNATCHED</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lookbook.html">Lookbook</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">© SNATCHED 2026. All rights reserved. Made in Accra, Ghana.</div>
+    </div>
+  </footer>
+
+  <!-- TOAST -->
+  <div id="checkoutToast"></div>
+
+  <script>
+    // ── DATA ────────────────────────────────────────────
+    const ALL_PRODUCTS = [
+      { id: 1, name: 'RHINESTONE BLACK HOODIE', price: 350, image: 'images/fit1.jpg', hover: 'images/fit1hover.jpg' },
+      { id: 2, name: 'HERRINGBONE PAINT SPLATTER', price: 420, image: 'images/fit2.jpg', hover: 'images/fit2hover.jpg' },
+      { id: 3, name: 'CALM SPORT CAP', price: 120, image: 'images/fit3.jpg', hover: 'images/fit3hover.jpg' },
+      { id: 4, name: 'DESSERT CAMO WAFFLE L/S', price: 280, image: 'images/fit4.jpg', hover: 'images/fit4hover.jpg' },
+      { id: 5, name: 'OVERSIZED TEE', price: 180, image: 'images/fit5.jpg', hover: 'images/fit5hover.jpg' },
+      { id: 6, name: 'CARGO PANTS', price: 380, image: 'images/fit6.jpg', hover: 'images/fit6hover.jpg' },
+      { id: 7, name: 'DENIM JACKET', price: 500, image: 'images/fit7.jpg', hover: 'images/fit7hover.jpg' },
+      { id: 8, name: 'TRACK PANTS', price: 250, image: 'images/fit8.jpg', hover: 'images/fit8hover.jpg' },
+      { id: 9, name: 'BEANIE', price: 95, image: 'images/fit9.jpg', hover: 'images/fit9hover.jpg' }
+    ];
+
+    const PROMO_CODES = { 'SNATCHED10': 10, 'ACCRA15': 15, 'NEWFIT20': 20 };
+
+    // ── CART ─────────────────────────────────────────────
+    function getCart() { try { return JSON.parse(localStorage.getItem('snatched_cart') || '[]'); } catch (e) { return []; } }
+    function saveCart(c) { localStorage.setItem('snatched_cart', JSON.stringify(c)); }
+
+    let deliveryCost = 20;
+    let discountPct = 0;
+
+    // ── RENDER SUMMARY ────────────────────────────────────
+    function renderSummary() {
+      const cart = getCart();
+      const list = document.getElementById('summaryItemsList');
+      const count = document.getElementById('summaryCount');
+      const subEl = document.getElementById('summarySubtotal');
+      const delEl = document.getElementById('summaryDelivery');
+      const totEl = document.getElementById('summaryTotal');
+      const discRow = document.getElementById('discountRow');
+      const discEl = document.getElementById('summaryDiscount');
+
+      if (!list) return;
+      list.innerHTML = '';
+
+      const totalItems = cart.reduce((s, i) => s + (parseInt(i.quantity) || 0), 0);
+      count.textContent = totalItems;
+
+      if (cart.length === 0) {
+        list.innerHTML = `
+      <div class="empty-bag-notice">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007Z"/></svg>
+        <p>Your bag is empty.</p>
+        <a href="store.html">Browse Products</a>
+      </div>`;
+        subEl.textContent = 'GH₵0.00';
+        delEl.textContent = 'GH₵0.00';
+        totEl.textContent = 'GH₵0.00';
+        document.getElementById('placeOrderBtn').disabled = true;
+        return;
+      }
+
+      document.getElementById('placeOrderBtn').disabled = false;
+
+      let subtotal = 0;
+      cart.forEach((item, idx) => {
+        const itemTotal = (parseFloat(item.price) || 0) * (parseInt(item.quantity) || 1);
+        subtotal += itemTotal;
+        list.insertAdjacentHTML('beforeend', `
+      <div class="summary-item">
+        <div class="summary-img-wrap">
+          <img src="${item.image || 'images/fit1.jpg'}" class="summary-img" alt="${item.name}" onerror="this.src='images/fit1.jpg'">
+          <span class="summary-qty-badge">${item.quantity}</span>
+        </div>
+        <div class="summary-item-info">
+          <div class="s-card-name" style="font-size:0.8rem">${item.name}</div>
+          <div class="summary-item-size">Size: ${item.size || 'OS'}</div>
+          <div class="summary-item-controls">
+            <button class="s-qty-btn" onclick="updateSummaryQty(${idx},-1)">−</button>
+            <span class="s-qty-val">${item.quantity}</span>
+            <button class="s-qty-btn" onclick="updateSummaryQty(${idx},1)">+</button>
+            <button class="s-remove-btn" onclick="removeSummaryItem(${idx})" title="Remove">✕</button>
+          </div>
+        </div>
+        <div class="summary-price">GH₵${itemTotal.toFixed(2)}</div>
+      </div>`);
+      });
+
+      const discount = Math.round((subtotal * discountPct) / 100);
+      const total = subtotal - discount + deliveryCost;
+
+      subEl.textContent = `GH₵${subtotal.toFixed(2)}`;
+      delEl.textContent = `GH₵${deliveryCost.toFixed(2)}`;
+      totEl.textContent = `GH₵${total.toFixed(2)}`;
+
+      if (discountPct > 0) {
+        discRow.style.display = 'flex';
+        discEl.textContent = `-GH₵${discount.toFixed(2)}`;
+      } else {
+        discRow.style.display = 'none';
+      }
+    }
+
+    window.updateSummaryQty = function (idx, delta) {
+      const cart = getCart();
+      if (cart[idx]) {
+        cart[idx].quantity += delta;
+        if (cart[idx].quantity <= 0) cart.splice(idx, 1);
+        saveCart(cart);
+        renderSummary();
+      }
+    };
+    window.removeSummaryItem = function (idx) {
+      const cart = getCart();
+      cart.splice(idx, 1);
+      saveCart(cart);
+      renderSummary();
+      showToast('Item removed from bag', false);
+    };
+
+    // ── PROMO CODE ────────────────────────────────────────
+    function applyPromo() {
+      const code = document.getElementById('promoInput').value.trim().toUpperCase();
+      const msg = document.getElementById('promoMsg');
+      msg.style.display = 'block';
+      if (PROMO_CODES[code]) {
+        discountPct = PROMO_CODES[code];
+        msg.className = 'promo-message success';
+        msg.textContent = `✓ Code applied! ${discountPct}% off your order.`;
+        showToast(`${discountPct}% discount applied!`, true);
+        renderSummary();
+      } else {
+        msg.className = 'promo-message error';
+        msg.textContent = '✕ Invalid promo code. Please try again.';
+      }
+    }
+
+    // ── DELIVERY TOGGLE ────────────────────────────────────
+    document.querySelectorAll('input[name="deliveryMethod"]').forEach((radio, i) => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.delivery-card').forEach(c => c.classList.remove('selected'));
+        radio.closest('.delivery-card').classList.add('selected');
+        deliveryCost = radio.value === 'express' ? 50 : 20;
+        renderSummary();
+      });
+    });
+
+    // ── PAYMENT TOGGLE ─────────────────────────────────────
+    document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('selected'));
+        radio.closest('.payment-card').classList.add('selected');
+      });
+    });
+
+    // ── VALIDATION ────────────────────────────────────────
+    function validateForm() {
+      const fields = ['email', 'firstName', 'lastName', 'phone', 'address', 'city', 'region'];
+      for (const id of fields) {
+        const el = document.getElementById(id);
+        if (!el || !el.value.trim()) {
+          el && el.focus();
+          showToast(`Please fill in: ${id.replace(/([A-Z])/g, ' $1')}`, false);
+          return false;
+        }
+      }
+      const email = document.getElementById('email').value;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showToast('Please enter a valid email address', false);
+        return false;
+      }
+      if (getCart().length === 0) {
+        showToast('Your bag is empty!', false);
+        return false;
+      }
+      return true;
+    }
+
+    // ── ORDER HANDLER ─────────────────────────────────────
+    function handlePlaceOrder() {
+      if (!validateForm()) return;
+
+      const cart = getCart();
+      const subtotal = cart.reduce((s, i) => (s + (parseFloat(i.price) || 0) * (parseInt(i.quantity) || 1)), 0);
+      const discount = Math.round((subtotal * discountPct) / 100);
+      const total = subtotal - discount + deliveryCost;
+      const payMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+      const email = document.getElementById('email').value;
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+
+      if (payMethod === 'cod') {
+        processCOD(total, email, firstName, lastName);
+      } else {
+        processPaystack(total, email, firstName, lastName);
+      }
+    }
+
+    function processCOD(total, email, firstName, lastName) {
+      const btn = document.getElementById('placeOrderBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="animation:spin 1s linear infinite"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg> Processing...';
+
+      setTimeout(() => {
+        const orderId = 'SN' + Date.now().toString().slice(-8).toUpperCase();
+        saveOrderAndRedirect({ orderId, email, firstName, lastName, total, method: 'Cash on Delivery' });
+      }, 1500);
+    }
+
+    function processPaystack(total, email, firstName, lastName) {
+      const btn = document.getElementById('placeOrderBtn');
+
+      if (typeof PaystackPop === 'undefined') {
+        showToast('Payment gateway not available. Please try COD.', false);
+        return;
+      }
+
+      const handler = PaystackPop.setup({
+        key: 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', // Replace with your Paystack public key
+        email: email,
+        amount: Math.round(total * 100),
+        currency: 'GHS',
+        ref: 'SN' + Date.now(),
+        metadata: {
+          custom_fields: [
+            { display_name: 'Customer Name', variable_name: 'customer_name', value: `${firstName} ${lastName}` },
+            { display_name: 'Phone', variable_name: 'phone', value: document.getElementById('phone').value }
+          ]
+        },
+        callback: function (response) {
+          const orderId = response.reference;
+          saveOrderAndRedirect({ orderId, email, firstName, lastName, total, method: 'Paystack' });
+        },
+        onClose: function () {
+          showToast('Payment cancelled. You can try again.', false);
+          btn.disabled = false;
+        }
+      });
+      handler.openIframe();
+    }
+
+    function saveOrderAndRedirect({ orderId, email, firstName, lastName, total, method }) {
+      const cart = getCart();
+      const order = {
+        id: orderId,
+        date: new Date().toISOString(),
+        customer: { email, firstName, lastName, phone: document.getElementById('phone').value },
+        address: {
+          street: document.getElementById('address').value,
+          city: document.getElementById('city').value,
+          region: document.getElementById('region').value,
+          landmark: document.getElementById('landmark').value
+        },
+        items: cart,
+        delivery: document.querySelector('input[name="deliveryMethod"]:checked').value,
+        paymentMethod: method,
+        total: total,
+        status: 'confirmed'
+      };
+
+      try {
+        const orders = JSON.parse(localStorage.getItem('snatched_orders') || '[]');
+        orders.unshift(order);
+        localStorage.setItem('snatched_orders', JSON.stringify(orders));
+        localStorage.removeItem('snatched_cart');
+      } catch (e) { }
+
+      const params = new URLSearchParams({ orderId, name: firstName, total: total.toFixed(2) });
+      window.location.href = `order-confirmation.html?${params}`;
+    }
+
+    // ── SUGGESTED PRODUCTS ────────────────────────────────
+    function renderSuggested() {
+      const cart = getCart();
+      const cartIds = cart.map(i => parseInt(i.id));
+      let pool = ALL_PRODUCTS.filter(p => !cartIds.includes(p.id));
+      if (pool.length < 4) pool = ALL_PRODUCTS;
+      // Shuffle & take 4
+      pool = pool.sort(() => 0.5 - Math.random()).slice(0, 4);
+
+      const grid = document.getElementById('suggestedGrid');
+      if (!grid) return;
+      grid.innerHTML = '';
+      pool.forEach(p => {
+        grid.insertAdjacentHTML('beforeend', `
+      <div class="suggested-card">
+        <a href="product.html?id=${p.id}" style="text-decoration:none; color:inherit;">
+          <div class="s-img-wrap">
+            <img class="s-primary" src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='images/fit1.jpg'">
+            <img class="s-hover"   src="${p.hover}" alt="${p.name} hover" loading="lazy" onerror="this.src='${p.image}'">
+          </div>
+        </a>
+        <div class="s-card-name">${p.name}</div>
+        <div class="s-card-price">GH₵${p.price}</div>
+        <button class="s-add-btn" onclick="addSuggestedToCart(${p.id}, event)">+ Add to Bag</button>
+      </div>`);
+      });
+    }
+
+    window.addSuggestedToCart = function (id, e) {
+      if (e) e.preventDefault();
+      const product = ALL_PRODUCTS.find(p => p.id === id);
+      if (!product) return;
+      const cart = getCart();
+      const existing = cart.find(i => parseInt(i.id) === id && i.size === 'OS');
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id: product.id, name: product.name, price: product.price, image: product.image, size: 'OS', quantity: 1 });
+      }
+      saveCart(cart);
+      renderSummary();
+      renderSuggested();
+      showToast(`${product.name} added to bag!`, true);
+    };
+
+    // ── TOAST ─────────────────────────────────────────────
+    function showToast(msg, isPink = false) {
+      const t = document.getElementById('checkoutToast');
+      t.textContent = msg;
+      t.className = 'show' + (isPink ? ' pink' : '');
+      clearTimeout(t._timer);
+      t._timer = setTimeout(() => { t.className = ''; }, 2800);
+    }
+
+    // ── SPIN ANIMATION ─────────────────────────────────────
+    const spinStyle = document.createElement('style');
+    spinStyle.textContent = '@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }';
+    document.head.appendChild(spinStyle);
+
+    // ── INIT ──────────────────────────────────────────────
+    renderSummary();
+    renderSuggested();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNATCHED — Shopping Bag</title>
+  <meta name="description" content="Your SNATCHED shopping bag.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- PostHog Analytics -->
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + " (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_EME9M9cSy9FvfHvcx2gMPkp1H5Dj4YaKufPRsAyon8Tf', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* Hamburger Menu */
+    .hamburger-menu {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      cursor: pointer;
+      background: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f0f0f0;
+    }
+
+    .hamburger-menu:hover {
+      transform: scale(1.05);
+      background: #fef0f5;
+    }
+
+    .hamburger-menu span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: #e78ec4;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .hamburger-menu.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger-menu.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-menu.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Sidebar Navigation */
+    .sidebar-nav {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background: #FFFFFF;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding: 80px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .sidebar-nav.active {
+      left: 0;
+    }
+
+    .sidebar-logo {
+      text-align: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      width: 100%;
+    }
+
+    .sidebar-logo img {
+      max-width: 160px;
+      width: 100%;
+      height: auto;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #000000;
+      transition: all 0.2s ease;
+      padding: 10px 20px;
+      text-align: center;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      min-width: 160px;
+    }
+
+    .sidebar-nav a:hover {
+      color: #FFFFFF;
+      background-color: #e78ec4;
+      border-color: #e78ec4;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Page Layout */
+    .page-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem 2rem;
+    }
+
+    /* Page Header */
+    .wishlist-header {
+      padding-top: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .wishlist-header h1 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: #111;
+      letter-spacing: -0.3px;
+      margin-bottom: 4px;
+    }
+
+    .wishlist-count {
+      font-size: 0.85rem;
+      color: #888;
+      font-weight: 400;
+    }
+
+    /* Empty State */
+    .empty-wishlist {
+      text-align: center;
+      padding: 6rem 2rem;
+      display: none;
+    }
+
+    .empty-wishlist.visible {
+      display: block;
+    }
+
+    .empty-wishlist p {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+    }
+
+    .empty-wishlist a {
+      display: inline-block;
+      background: #111;
+      color: white;
+      padding: 12px 28px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: background 0.2s ease;
+    }
+
+    .empty-wishlist a:hover {
+      background: #e78ec4;
+    }
+
+    /* Wishlist Grid — matches reference: multiple columns, card-only */
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    /* Individual Wishlist Card */
+    .wishlist-card {
+      position: relative;
+      background: #fff;
+    }
+
+    /* X Remove Button — top right, just like the reference image */
+    .remove-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 26px;
+      height: 26px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      font-size: 1rem;
+      color: #444;
+      line-height: 1;
+      transition: color 0.2s ease, background 0.2s ease;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .remove-btn:hover {
+      color: #e78ec4;
+      background: #fff0f7;
+    }
+
+    /* Product Image */
+    .wishlist-card__img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #f5f3f0;
+    }
+
+    .wishlist-card__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .wishlist-card:hover .wishlist-card__img-wrap img {
+      transform: scale(1.03);
+    }
+
+    /* Product Info below image */
+    .wishlist-card__info {
+      padding: 0.6rem 0 0 0;
+    }
+
+    .wishlist-card__name {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #111;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .wishlist-card__price {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    /* Add to Bag Button */
+    .wishlist-card__add {
+      display: block;
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 8px;
+      background: #111;
+      color: white;
+      border: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .wishlist-card__add:hover {
+      background: #e78ec4;
+    }
+
+    @media (max-width: 1024px) {
+      .wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .page-wrapper {
+        padding: 1rem 1rem 3rem 1rem;
+      }
+
+      .wishlist-header h1 {
+        font-size: 1.3rem;
+      }
+
+      .hamburger-menu {
+        top: 12px;
+        left: 12px;
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Hamburger Menu -->
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar-nav" id="sidebarNav">
+    <div class="sidebar-logo">
+      <img src="images/pinksnatchedlogo.png" alt="SNATCHED"
+        onerror="this.src='https://placehold.co/200x60/e78ec4/FFFFFF?text=SNATCHED'">
+    </div>
+    <a href="index.html">Home</a>
+    <a href="store.html">Store</a>
+    <a href="lookbook.html">Lookbook</a>
+    <a href="comingsoon.html">Coming soon</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Main Content -->
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <div class="wishlist-header">
+      <h1>Shopping Bag</h1>
+      <p class="wishlist-count" id="wishlistCount">0 items</p>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-wishlist" id="emptyWishlist">
+      <p>Your bag is empty.</p>
+      <a href="store.html">Shop Now</a>
+    </div>
+
+    <!-- Wishlist Grid -->
+    <div class="wishlist-grid" id="wishlistGrid"></div>
+
+  </div>
+
+
+
+  <script>
+    // ── Hamburger ──
+    const hamburger = document.getElementById('hamburgerMenu');
+    const sidebar = document.getElementById('sidebarNav');
+    const overlay = document.getElementById('overlay');
+
+    function toggleMenu() {
+      hamburger.classList.toggle('active');
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+
+    // ── Bag Data ──
+    function getBag() {
+      try {
+        const data = localStorage.getItem('snatched_cart');
+        return data ? JSON.parse(data) : [];
+      } catch (e) { return []; }
+    }
+
+    function saveBag(list) {
+      localStorage.setItem('snatched_cart', JSON.stringify(list));
+    }
+
+    function removeFromBag(id) {
+      let list = getBag();
+      list = list.filter(item => item.id !== id && item.id !== String(id) && item.id !== Number(id));
+      saveBag(list);
+      renderBag();
+    }
+
+    function renderBag() {
+      const list = getBag();
+      const grid = document.getElementById('wishlistGrid');
+      const emptyEl = document.getElementById('emptyWishlist');
+      const countEl = document.getElementById('wishlistCount');
+
+      let totalItems = 0;
+      let totalPrice = 0;
+      list.forEach(item => {
+        totalItems += item.quantity || 1;
+        totalPrice += (item.price || 0) * (item.quantity || 1);
+      });
+
+      countEl.textContent = `${totalItems} item${totalItems !== 1 ? 's' : ''} — GH₵${totalPrice.toFixed(2)}`;
+
+      if (list.length === 0) {
+        grid.innerHTML = '';
+        emptyEl.classList.add('visible');
+        return;
+      }
+
+      emptyEl.classList.remove('visible');
+      grid.innerHTML = '';
+
+      list.forEach(item => {
+        const id = item.id;
+        const name = item.name || 'Product';
+        const price = item.price || 0;
+        const image = item.image || 'images/fit1.jpg';
+        const quantity = item.quantity || 1;
+
+        const card = document.createElement('div');
+        card.className = 'wishlist-card';
+        card.innerHTML = `
+          <button class="remove-btn" onclick="removeFromBag(${id})" aria-label="Remove ${name}">&#x2715;</button>
+          <div class="wishlist-card__img-wrap">
+            <img src="${image}" alt="${name}"
+              onerror="this.src='https://placehold.co/400x500/f5f3f0/999999?text=SNATCHED'"
+              onclick="window.location.href='product.html?id=${id}'">
+          </div>
+          <div class="wishlist-card__info">
+            <div class="wishlist-card__name">${name} (x${quantity})</div>
+            <div class="wishlist-card__price">GH₵${price.toFixed(2)}</div>
+          </div>
+          <button class="wishlist-card__add" onclick="window.location.href='checkout.html'">Checkout</button>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function showToast(msg) {
+      let toast = document.getElementById('snatchedToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'snatchedToast';
+        toast.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a1a;color:white;padding:12px 24px;border-radius:8px;z-index:9999;font-size:0.85rem;opacity:0;transition:opacity 0.3s;pointer-events:none;';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+    }
+
+    // Init
+    renderBag();
+  </script>
+
+</body>
+
+</html>

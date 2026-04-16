@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SNATCHED — Home</title>
+
+  <!-- DM SANS FONT - Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- PostHog Analytics -->
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + " (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_EME9M9cSy9FvfHvcx2gMPkp1H5Dj4YaKufPRsAyon8Tf', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      padding: 2rem;
+      position: relative;
+    }
+
+    #backgroundVideo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+      /* Cinematic Editorial Film Adjustments */
+      filter: saturate(0.85) contrast(1.1) brightness(0.95);
+    }
+
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      /* Frosted Glass Core for Readability */
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.35) 35%, rgba(0, 0, 0, 0.1) 100%);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .video-overlay::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* True 35mm Digital Film Grain via SVG Noise */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    .snatched-container {
+      text-align: center;
+      max-width: 520px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      margin-bottom: 2rem;
+      display: inline-block;
+    }
+
+    .logo img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .time-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0px;
+      margin-bottom: 2.8rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e1e1e;
+      letter-spacing: 0.2px;
+    }
+
+    .datetime-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+
+    .vertical-nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 2.8rem;
+      width: 100%;
+      list-style: none;
+      padding: 0;
+    }
+
+    .vertical-nav li {
+      list-style: none;
+      width: auto;
+    }
+
+    .vertical-nav a {
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #000000;
+      transition: all 0.2s ease;
+      padding: 8px 16px;
+      display: inline-block;
+      letter-spacing: 0.3px;
+      background-color: transparent;
+    }
+
+    .vertical-nav a:hover {
+      background-color: #e78ec4;
+      color: #FFFFFF;
+      opacity: 1;
+      transform: scale(1.02);
+    }
+
+    .social-under {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .social-under a {
+      color: #000000;
+      font-size: 1.5rem;
+      transition: opacity 0.2s, transform 0.1s;
+      text-decoration: none;
+    }
+
+    .social-under a:hover {
+      color: #e78ec4;
+      opacity: 0.7;
+      transform: scale(0.98);
+    }
+
+    /* VIP POPUP STYLES */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .popup-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .vip-popup {
+      background: #FFFFFF;
+      width: 850px;
+      max-width: 90vw;
+      height: auto;
+      min-height: 500px;
+      max-height: 90vh;
+      position: relative;
+      transform: scale(0.95);
+      transition: transform 0.3s ease;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      display: flex;
+      overflow: hidden;
+    }
+
+    .popup-overlay.active .vip-popup {
+      transform: scale(1);
+    }
+
+    .close-popup {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 24px;
+      color: #999;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 10;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .close-popup:hover {
+      color: #e78ec4;
+    }
+
+    .popup-left {
+      width: 45%;
+      background: linear-gradient(135deg, #e78ec4 0%, #d46b9e 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .popup-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #e78ec4 0%, #d46b9e 100%);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .popup-right {
+      width: 55%;
+      padding: 32px;
+      background: #FFFFFF;
+      overflow-y: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .popup-right h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #1e1e1e;
+      margin-bottom: 8px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -0.5px;
+    }
+
+    .highlight {
+      color: #e78ec4;
+    }
+
+    .popup-description {
+      color: #666;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .vip-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .form-row-dual {
+      display: flex;
+      gap: 16px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1e1e1e;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      background: #ffffff;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #e78ec4;
+    }
+
+    .phone-input-wrapper {
+      width: 100%;
+    }
+
+    .phone-input-wrapper input {
+      width: 100%;
+      padding: 12px 14px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 4px 0;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      accent-color: #e78ec4;
+      cursor: pointer;
+    }
+
+    .checkbox-group label {
+      font-size: 0.7rem;
+      color: #666;
+      line-height: 1.4;
+      text-transform: none;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .checkbox-group a {
+      color: #e78ec4;
+      text-decoration: none;
+    }
+
+    .submit-vip {
+      background: #1e1e1e;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .submit-vip:hover {
+      background: #e78ec4;
+      transform: translateY(-1px);
+    }
+
+    .success-message {
+      text-align: center;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .success-message i {
+      font-size: 60px;
+      color: #e78ec4;
+      margin-bottom: 20px;
+    }
+
+    .success-message h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: #1e1e1e;
+    }
+
+    .success-message p {
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .close-success {
+      background: #e78ec4;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .vip-popup {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+        max-height: 90vh;
+      }
+
+      .popup-left {
+        display: none;
+      }
+
+      .popup-right {
+        width: 100%;
+        padding: 32px 24px;
+      }
+
+      .popup-right h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .form-row-dual {
+        flex-direction: column;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      body {
+        padding: 1.5rem;
+      }
+
+      .logo img {
+        max-width: 280px;
+      }
+
+      .vertical-nav {
+        gap: 1rem;
+      }
+
+      .vertical-nav a {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+
+      .time-row {
+        margin-bottom: 2rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- BACKGROUND VIDEO -->
+  <video autoplay loop muted playsinline id="backgroundVideo">
+    <!-- REPLACE 'your-video.mp4' WITH YOUR ACTUAL VIDEO FILE -->
+    <source src="videos/vhs.mp4" type="video/mp4">
+  </video>
+
+  <!-- Optional: An overlay so your black text still pops on top of the video -->
+  <div class="video-overlay"></div>
+
+  <div class="snatched-container">
+
+    <div class="logo">
+      <img src="images/pinksnatchedlogo-removebg-preview.png" alt="Snatched"
+        onerror="this.src='https://placehold.co/400x120/e78ec4/FFFFFF?text=SNATCHED'">
+    </div>
+
+    <div class="time-row">
+      <span class="datetime-text" id="ghanaDateTime">--/--/---- --:-- -- GMT</span>
+    </div>
+
+    <ul class="vertical-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="lookbook.html">Lookbook</a></li>
+      <li><a href="comingsoon.html">Coming soon</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="social-under">
+      <a href="https://www.instagram.com/olaoluslawn/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- VIP POPUP -->
+  <div class="popup-overlay" id="vipPopup">
+    <div class="vip-popup">
+      <div class="close-popup" id="closePopup">✕</div>
+
+      <div class="popup-left" id="imageSection">
+        <img src="images/snatched black.png" alt="SNATCHED VIP"
+          onerror="this.parentElement.innerHTML='<div class=\'image-placeholder\'><i class=\'fas fa-crown\'></i><h3>SNATCHED VIP</h3><p>Exclusive access • Early releases • Members-only perks</p></div>'">
+      </div>
+
+      <div class="popup-right" id="popupFormContent">
+        <h2>SIGN UP TO BECOME A <span class="highlight">VIP</span></h2>
+        <p class="popup-description">
+          10% off your first purchase • Early access to new collections • Sale previews • Exclusive offers
+        </p>
+
+        <form class="vip-form" id="vipForm">
+          <div class="form-row-dual">
+            <div class="form-group">
+              <label>FIRST NAME *</label>
+              <input type="text" id="firstName" name="first_name" required>
+            </div>
+            <div class="form-group">
+              <label>LAST NAME *</label>
+              <input type="text" id="lastName" name="last_name" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>EMAIL *</label>
+            <input type="email" id="email" name="email" placeholder="enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label>PHONE NUMBER *</label>
+            <div class="phone-input-wrapper">
+              <input type="tel" id="phone" name="phone" placeholder="024xxxxxxxx" required>
+            </div>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="smsConsent">
+            <label for="smsConsent">
+              By submitting this form, you consent to receive informational and/or marketing texts from SNATCHED.
+              Consent is not a condition of purchase. Msg & data rates may apply.
+              <a href="#">Privacy Policy & Terms</a>
+            </label>
+          </div>
+
+          <button type="submit" class="submit-vip">BECOME A VIP</button>
+          <p style="font-size: 0.65rem; text-align: center; color: #999; margin-top: 8px;">
+            By clicking submit, you consent to receive marketing emails & texts from SNATCHED.
+          </p>
+        </form>
+      </div>
+
+      <div class="popup-right hidden" id="successContent">
+        <div class="success-message">
+          <i class="fas fa-check-circle"></i>
+          <h3>WELCOME VIP</h3>
+          <p>You're now a SNATCHED VIP member! Check your email for your 10% off code.</p>
+          <button class="close-success" id="closeSuccess">START SHOPPING</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Update Ghana time
+      function updateGhanaDateTime() {
+        const dateTimeSpan = document.getElementById('ghanaDateTime');
+        if (!dateTimeSpan) return;
+        try {
+          const now = new Date();
+          const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Africa/Accra',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+          });
+          const timeFormatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Africa/Accra',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          });
+          const formattedDate = dateFormatter.format(now);
+          let formattedTime = timeFormatter.format(now).replace(/\s+/g, ' ').trim();
+          dateTimeSpan.textContent = `${formattedDate} ${formattedTime} GMT`;
+        } catch (err) {
+          const now = new Date();
+          const day = now.getUTCDate().toString().padStart(2, '0');
+          const month = (now.getUTCMonth() + 1).toString().padStart(2, '0');
+          const year = now.getUTCFullYear();
+          let hours = now.getUTCHours();
+          const minutes = now.getUTCMinutes().toString().padStart(2, '0');
+          const ampm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12;
+          hours = hours ? hours : 12;
+          const formattedTime = `${hours}:${minutes} ${ampm}`;
+          dateTimeSpan.textContent = `${day}/${month}/${year} ${formattedTime} GMT`;
+        }
+      }
+
+      updateGhanaDateTime();
+      setInterval(updateGhanaDateTime, 1000);
+
+      // ============================================
+      // COOKIE FUNCTIONS - So popup doesn't keep appearing
+      // ============================================
+
+      function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+          const date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+
+      function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+      // ============================================
+      // RESEND SUBMISSION FUNCTION
+      // ============================================
+
+      async function submitToResend(email, firstName, lastName, phone) {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ firstName, lastName, email, phone })
+        });
+        if (!response.ok) {
+          const data = await response.json();
+          throw new Error(data.error || 'Subscription failed');
+        }
+        return response.json();
+      }
+
+      // ============================================
+      // POPUP CONTROL
+      // ============================================
+
+      const popup = document.getElementById('vipPopup');
+      const closeBtn = document.getElementById('closePopup');
+      const vipForm = document.getElementById('vipForm');
+      const formContent = document.getElementById('popupFormContent');
+      const successContent = document.getElementById('successContent');
+      const closeSuccess = document.getElementById('closeSuccess');
+
+      // Check if user has already submitted or closed popup before
+      const hasSubmitted = getCookie('snatched_vip_submitted');
+      const hasClosedPopup = getCookie('snatched_popup_closed');
+
+      // Only show popup if user hasn't submitted and hasn't closed it before
+      if (!hasSubmitted && !hasClosedPopup) {
+        setTimeout(() => {
+          popup.classList.add('active');
+          console.log('VIP Popup shown to new visitor');
+        }, 500);
+      } else {
+        console.log('VIP Popup not shown - User already submitted or closed');
+      }
+
+      function closePopupAndRemember() {
+        popup.classList.remove('active');
+        // Set cookie so popup doesn't show again for 30 days
+        setCookie('snatched_popup_closed', 'true', 30);
+        setTimeout(() => {
+          if (vipForm) vipForm.reset();
+          formContent.classList.remove('hidden');
+          successContent.classList.add('hidden');
+        }, 300);
+      }
+
+      if (closeBtn) closeBtn.addEventListener('click', closePopupAndRemember);
+
+      popup.addEventListener('click', function (e) {
+        if (e.target === popup) {
+          closePopupAndRemember();
+        }
+      });
+
+      // Handle form submission
+      if (vipForm) {
+        vipForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          const firstName = document.getElementById('firstName').value;
+          const lastName = document.getElementById('lastName').value;
+          const email = document.getElementById('email').value;
+          const phone = document.getElementById('phone').value;
+
+          if (!firstName || !lastName || !email || !phone) {
+            alert('Please fill in all required fields');
+            return;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+          }
+
+          const cleanPhone = phone.replace(/\s/g, '');
+          if (!/^[0-9]{9,10}$/.test(cleanPhone)) {
+            alert('Please enter a valid Ghana phone number (e.g., 024xxxxxxx)');
+            return;
+          }
+
+          // Format phone with Ghana code
+          const formattedPhone = '+233' + cleanPhone;
+
+          const submitBtn = vipForm.querySelector('.submit-vip');
+          const originalBtnText = submitBtn.textContent;
+          submitBtn.textContent = 'SENDING...';
+          submitBtn.disabled = true;
+
+          submitToResend(email, firstName, lastName, formattedPhone)
+            .then(() => {
+              // Track signup event in PostHog
+              if (typeof posthog !== 'undefined') {
+                posthog.identify(email, { firstName, lastName, phone: formattedPhone });
+                posthog.capture('vip_signup', { email, firstName });
+              }
+
+              // Set cookie so popup never shows again
+              setCookie('snatched_vip_submitted', 'true', 365);
+              setCookie('snatched_popup_closed', '', -1);
+
+              formContent.classList.add('hidden');
+              successContent.classList.remove('hidden');
+              console.log('VIP Signup Complete! Welcome email sent via Resend.');
+            })
+            .catch((err) => {
+              console.error('Signup error:', err);
+              submitBtn.textContent = originalBtnText;
+              submitBtn.disabled = false;
+              alert('Something went wrong. Please try again.');
+            });
+        });
+      }
+
+      if (closeSuccess) {
+        closeSuccess.addEventListener('click', closePopupAndRemember);
+      }
+
+      // Phone number formatting
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function (e) {
+          let value = e.target.value.replace(/\D/g, '');
+          if (value.length > 3 && value.length <= 6) {
+            value = value.slice(0, 3) + ' ' + value.slice(3);
+          } else if (value.length > 6) {
+            value = value.slice(0, 3) + ' ' + value.slice(3, 6) + ' ' + value.slice(6, 10);
+          }
+          e.target.value = value;
+        });
+      }
+
+    })();
+  </script>
+
+</body>
+
+</html>

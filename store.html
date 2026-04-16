@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SNATCHED — Store | Premium Streetwear from Accra</title>
+  <meta name="description"
+    content="Shop the latest SNATCHED collection. Premium streetwear hoodies, caps, jackets and more. Free Accra same-day delivery. Ships across Ghana.">
+  <meta name="keywords" content="SNATCHED, streetwear, Accra, Ghana, fashion, hoodies, caps, clothing">
+  <meta property="og:title" content="SNATCHED — Store">
+  <meta property="og:description" content="Shop premium streetwear from Accra. Hoodies, caps, jackets and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/pinksnatchedlogo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="store.html">
+  <!-- PostHog Analytics -->
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + " (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_EME9M9cSy9FvfHvcx2gMPkp1H5Dj4YaKufPRsAyon8Tf', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .main-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header - Centered logo with top-right icons opposite hamburger */
+    .snatched-header {
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      padding: 1rem;
+      position: relative;
+    }
+
+    .logo {
+      margin-bottom: 0.5rem;
+    }
+
+    .logo img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .info-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .time-row {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1a1a1a;
+    }
+
+    .datetime-text {
+      font-family: monospace;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 0.25rem auto;
+    }
+
+    /* Top Right Icons Container - opposite the hamburger (top left) */
+    .top-right-icons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      z-index: 1002;
+      background: transparent;
+    }
+
+    .icon-btn {
+      background: white;
+      border: none;
+      color: #1a1a1a;
+      font-size: 1.2rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon-btn:hover {
+      color: #e78ec4;
+      transform: scale(1.05);
+      background: #fef0f5;
+    }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn.active svg {
+      fill: #ff0000;
+      stroke: #ff0000;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #e78ec4;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: bold;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Search Dropdown */
+    .search-dropdown {
+      position: fixed;
+      top: 75px;
+      right: 20px;
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 12px;
+      width: 280px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 1003;
+      display: none;
+    }
+
+    .search-dropdown.active {
+      display: block;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.85rem;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #e78ec4;
+    }
+
+    /* User Dropdown */
+    .user-dropdown {
+      position: fixed;
+      top: 75px;
+      right: 20px;
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      z-index: 1003;
+      display: none;
+      flex-direction: column;
+      min-width: 180px;
+    }
+
+    .user-dropdown.active {
+      display: flex;
+    }
+
+    .user-dropdown a {
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-size: 0.85rem;
+    }
+
+    .user-dropdown a:hover {
+      background: #fef0f5;
+      color: #e78ec4;
+    }
+
+    .user-dropdown hr {
+      margin: 4px 0;
+      border-color: #f0f0f0;
+    }
+
+    /* Hamburger Menu (left side) */
+    .hamburger-menu {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      cursor: pointer;
+      background: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f0f0f0;
+    }
+
+    .hamburger-menu:hover {
+      transform: scale(1.05);
+      background: #fef0f5;
+    }
+
+    .hamburger-menu span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: #e78ec4;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .hamburger-menu.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger-menu.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-menu.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Sidebar Navigation */
+    .sidebar-nav {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background: #FFFFFF;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding: 80px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .sidebar-nav.active {
+      left: 0;
+    }
+
+    .sidebar-logo {
+      text-align: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+      width: 100%;
+    }
+
+    .sidebar-logo img {
+      max-width: 160px;
+      width: 100%;
+      height: auto;
+    }
+
+    .sidebar-nav a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #000000;
+      transition: all 0.2s ease;
+      padding: 10px 20px;
+      text-align: center;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      min-width: 160px;
+    }
+
+    .sidebar-nav a:hover {
+      color: #FFFFFF;
+      background-color: #e78ec4;
+      border-color: #e78ec4;
+    }
+
+    .overlay,
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active,
+    .cart-overlay.active {
+      display: block;
+    }
+
+    /* Products Grid */
+    .products-area {
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .product-item {
+      background: transparent;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .product-item:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    /* Wishlist Heart on Product Cards */
+    .product-wishlist-heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 5;
+      background: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-wishlist-heart svg {
+      width: 18px;
+      height: 18px;
+      stroke: #ccc;
+      fill: none;
+      transition: all 0.2s ease;
+    }
+
+    .product-wishlist-heart.active svg {
+      fill: #ff0000;
+      stroke: #ff0000;
+    }
+
+    .product-wishlist-heart:hover svg {
+      stroke: #e78ec4;
+    }
+
+    .product-wishlist-heart.active:hover svg {
+      fill: #ff0000;
+      stroke: #ff0000;
+    }
+
+    .product-item__image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: #f5f3f0;
+    }
+
+    .product-item__image .primary-img,
+    .product-item__image .secondary-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .product-item__image .primary-img {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .product-item__image .secondary-img {
+      opacity: 0;
+      z-index: 2;
+    }
+
+    .product-item:hover .product-item__image .primary-img {
+      opacity: 0;
+    }
+
+    .product-item:hover .product-item__image .secondary-img {
+      opacity: 1;
+    }
+
+    .product-item__info {
+      display: none;
+    }
+
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      max-width: 100%;
+      height: 100%;
+      background: #fff;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1006;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-sidebar.active {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-header h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .cart-item-img {
+      width: 80px;
+      height: 100px;
+      object-fit: fill;
+      background: #f5f3f0;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-item-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .cart-item-size {
+      font-size: 0.8rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .cart-item-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: auto;
+    }
+
+    .qty-btn {
+      background: #eee;
+      border: none;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .qty-val {
+      font-size: 0.9rem;
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      font-size: 0.8rem;
+      color: #999;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-left: auto;
+    }
+
+    .cart-item-price {
+      font-size: 0.9rem;
+      font-weight: 500;
+      align-self: flex-end;
+    }
+
+    .cart-footer {
+      padding: 20px;
+      border-top: 1px solid #eee;
+      background: #fafafa;
+    }
+
+    .cart-subtotal {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 15px;
+      background: #212121;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .checkout-btn:hover {
+      background: #000;
+    }
+
+    /* Footer */
+    .site-footer-wrapper {
+      background: #fcfbf9;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
+
+    .wrapper--full-padded {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer__blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      padding: 3rem 0;
+    }
+
+    .footer__block {
+      flex: 1 1 200px;
+    }
+
+    .footer__block__title {
+      font-size: 14px;
+      margin-bottom: 16px;
+      font-weight: 500;
+      color: #212121;
+    }
+
+    .footer__quicklinks {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer__quicklinks li {
+      margin-bottom: 8px;
+    }
+
+    .footer__quicklinks a {
+      text-decoration: none;
+      color: #636262;
+      font-size: 12px;
+      transition: opacity 0.2s;
+    }
+
+    .footer__quicklinks a:hover {
+      opacity: 0.7;
+    }
+
+    .newsletter-form .field {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ddd;
+      background: white;
+    }
+
+    .newsletter-form button {
+      width: 100%;
+      padding: 10px;
+      background: #212121;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .footer-copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-bottom: 2rem;
+      font-size: 11px;
+      color: #8c8a87;
+      border-top: 1px solid #eee;
+      padding-top: 2rem;
+    }
+
+    .social-under {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .social-under a {
+      color: #000000;
+      font-size: 1.5rem;
+      transition: opacity 0.2s;
+    }
+
+    .social-under a:hover {
+      color: #e78ec4;
+    }
+
+    @media (max-width: 768px) {
+      .main-wrapper {
+        padding: 1rem;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .logo img {
+        max-width: 280px;
+      }
+
+      .top-right-icons {
+        top: 15px;
+        right: 15px;
+        gap: 12px;
+      }
+
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .icon-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .hamburger-menu {
+        top: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .hamburger-menu span {
+        width: 20px;
+      }
+
+      .footer__blocks {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .wrapper--full-padded {
+        padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+    }
+
+    /* Mobile Fixed Header - Hidden on Desktop */
+    .mobile-fixed-header {
+      display: none;
+    }
+
+    /* Desktop Header - Hidden on Mobile */
+    @media (max-width: 768px) {
+      .desktop-header {
+        display: none;
+      }
+
+      .mobile-fixed-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 8px 15px;
+        z-index: 1004;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        gap: 10px;
+      }
+
+      .mobile-hamburger {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .mobile-hamburger span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: #e78ec4;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+      }
+
+      .mobile-hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .mobile-hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      .mobile-logo {
+        flex: 1;
+        text-align: center;
+      }
+
+      .mobile-logo img {
+        max-width: 110px;
+        height: auto;
+        display: inline-block;
+      }
+
+      .mobile-icons {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .mobile-icon-btn {
+        background: white;
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: all 0.2s ease;
+      }
+
+      .mobile-icon-btn svg {
+        width: 18px;
+        height: 18px;
+        stroke: #1a1a1a;
+        fill: none;
+      }
+
+      .mobile-icon-btn:hover {
+        background: #fef0f5;
+        transform: scale(1.05);
+      }
+
+      .mobile-cart-badge {
+        position: absolute;
+        top: -3px;
+        right: -3px;
+        background: #e78ec4;
+        color: white;
+        font-size: 0.6rem;
+        font-weight: bold;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .main-wrapper {
+        padding-top: 70px;
+      }
+
+      /* Hide original hamburger and top icons on mobile */
+      .hamburger-menu,
+      .top-right-icons {
+        display: none;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <!-- Mobile Fixed Header -->
+  <div class="mobile-fixed-header">
+    <div class="mobile-hamburger" id="mobileHamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="mobile-icons">
+      <button class="mobile-icon-btn" id="mobileSearchBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+        </svg>
+      </button>
+      <button class="mobile-icon-btn" onclick="toggleWishlistSidebar()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+        </svg>
+      </button>
+      <button class="mobile-icon-btn" id="mobileCartBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+        </svg>
+        <span class="mobile-cart-badge" id="mobileCartBadge">0</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hamburger Menu (Left Side) -->
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Top Right Icons (Opposite Hamburger) - Using SVG Icons -->
+  <div class="top-right-icons">
+    <!-- Search Icon -->
+    <button class="icon-btn" id="searchBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+    </button>
+    <!-- Heart Icon (Wishlist) -->
+    <button class="icon-btn" id="wishlistIconBtn" onclick="toggleWishlistSidebar()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+      </svg>
+    </button>
+    <!-- Cart Icon -->
+    <button class="icon-btn" id="cartNumber">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+      </svg>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </div>
+
+  <!-- Dropdowns -->
+  <div class="search-dropdown" id="searchDropdown">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search products...">
+  </div>
+  <div class="user-dropdown" id="userDropdown" style="display:none;"></div>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar-nav" id="sidebarNav">
+    <div class="sidebar-logo">
+      <img src="images/pinksnatchedlogo.png" alt="Snatched"
+        onerror="this.src='https://placehold.co/400x120/e78ec4/FFFFFF?text=SNATCHED'">
+    </div>
+    <a href="index.html">Home</a>
+    <a href="store.html">Store</a>
+    <a href="lookbook.html">Lookbook</a>
+    <a href="comingsoon.html">Coming soon</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Your Bag</h2>
+      <button class="close-cart" id="closeCartBtn">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItemsContainer"></div>
+    <div class="cart-footer">
+      <div class="cart-subtotal">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal">GH₵0.00</span>
+      </div>
+      <button class="checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- Wishlist Sidebar -->
+  <div class="cart-sidebar" id="wishlistSidebar">
+    <div class="cart-header">
+      <h2>Your Wishlist</h2>
+      <button class="close-cart" id="closeWishlistBtn">&times;</button>
+    </div>
+    <div class="cart-items" id="wishlistItemsContainer"></div>
+  </div>
+  <div class="cart-overlay" id="wishlistOverlay"></div>
+
+  <div class="main-wrapper">
+
+    <!-- HEADER with centered logo -->
+    <div class="snatched-header">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/pinksnatchedlogo.png" alt="SNATCHED"
+            onerror="this.src='https://placehold.co/280x90/000000/FFFFFF?text=SNATCHED'">
+        </a>
+      </div>
+      <div class="info-stack">
+        <div class="time-row"><span class="datetime-text" id="ghanaDateTime">--/--/---- --:-- -- GMT</span></div>
+        <div class="divider"></div>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-area">
+      <div class="grid" id="productGrid">
+        <!-- Product 1 -->
+        <div class="product-item" data-id="1" data-name="ribbed long sleeve crop top" data-price="350"
+          data-image="images/fit1.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 1, 'ribbed long sleeve crop top', 350, 'images/fit1.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=1" style="display:block; text-decoration:none; color:inherit;">
+            <div class="product-item__image">
+              <img class="primary-img" src="images/fit1.jpg" alt="ribbed long sleeve crop top" loading="lazy">
+              <img class="secondary-img" src="images/fit1hover.jpg" alt="ribbed long sleeve crop top - hover"
+                loading="lazy" onerror="this.src='images/fit1.jpg'">
+            </div>
+          </a>
+        </div>
+        <!-- Product 2 -->
+        <div class="product-item" data-id="2" data-name="high waist flare leggings" data-price="420"
+          data-image="images/fit2.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 2, 'high waist flare leggings', 420, 'images/fit2.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=2">
+            <div class="product-item__image"><img class="primary-img" src="images/fit2.jpg" loading="lazy"><img
+                class="secondary-img" src="images/fit2hover.jpg" loading="lazy" onerror="this.src='images/fit2.jpg'">
+            </div>
+          </a>
+        </div>
+        <!-- Product 3 -->
+        <div class="product-item" data-id="3" data-name="oversized varsity hoodie" data-price="570"
+          data-image="images/fit3.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 3, 'oversized varsity hoodie', 570, 'images/fit3.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=3">
+            <div class="product-item__image"><img class="primary-img" src="images/fit3.jpg" loading="lazy"><img
+                class="secondary-img" src="images/fit3hover.jpg" loading="lazy" onerror="this.src='images/fit3.jpg'">
+            </div>
+          </a>
+        </div>
+        <!-- Product 4 -->
+        <div class="product-item" data-id="4" data-name="velour track set jogger" data-price="480"
+          data-image="images/fit4.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 4, 'velour track set jogger', 480, 'images/fit4.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=4">
+            <div class="product-item__image"><img class="primary-img" src="images/fit4.jpg" loading="lazy"><img
+                class="secondary-img" src="images/fit4hover.jpg" loading="lazy" onerror="this.src='images/fit4.jpg'">
+            </div>
+          </a>
+        </div>
+        <!-- Product 5 -->
+        <div class="product-item" data-id="5" data-name="scoop neck bodysuit" data-price="280"
+          data-image="images/fit5.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 5, 'scoop neck bodysuit', 280, 'images/fit5.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=5">
+            <div class="product-item__image"><img class="primary-img" src="images/fit5.jpg" loading="lazy"><img
+                class="secondary-img" src="images/fit5hover.jpg" loading="lazy" onerror="this.src='images/fit5.jpg'">
+            </div>
+          </a>
+        </div>
+        <!-- Product 6 -->
+        <div class="product-item" data-id="6" data-name="low rise wide leg trouser" data-price="380"
+          data-image="images/fit6.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 6, 'low rise wide leg trouser', 380, 'images/fit6.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=6">
+            <div class="product-item__image"><img class="primary-img" src="images/fit6.jpg" loading="lazy"><img
+                class="secondary-img" src="images/fit6hover.jpg" loading="lazy" onerror="this.src='images/fit6.jpg'">
+            </div>
+          </a>
+        </div>
+        <!-- Product 7 -->
+        <div class="product-item" data-id="7" data-name="seamless bike short" data-price="220"
+          data-image="images/fit7.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 7, 'seamless bike short', 220, 'images/fit7.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=7">
+            <div class="product-item__image"><img class="primary-img" src="images/fit7.jpg" loading="lazy"><img
+                class="secondary-img" src="images/fit7hover.jpg" loading="lazy" onerror="this.src='images/fit7.jpg'">
+            </div>
+          </a>
+        </div>
+        <!-- Product 8 -->
+        <div class="product-item" data-id="8" data-name="ribbed mini skirt" data-price="250"
+          data-image="images/fit8.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 8, 'ribbed mini skirt', 250, 'images/fit8.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=8">
+            <div class="product-item__image"><img class="primary-img" src="images/fit8.jpg" loading="lazy"><img
+                class="secondary-img" src="images/fit8hover.jpg" loading="lazy" onerror="this.src='images/fit8.jpg'">
+            </div>
+          </a>
+        </div>
+        <!-- Product 9 -->
+        <div class="product-item" data-id="9" data-name="velour zip-up jacket" data-price="620"
+          data-image="images/fit9.jpg">
+          <div class="product-wishlist-heart"
+            onclick="toggleWishlist(event, 9, 'velour zip-up jacket', 620, 'images/fit9.jpg')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+            </svg>
+          </div>
+          <a href="product.html?id=9">
+            <div class="product-item__image"><img class="primary-img" src="images/fit9.jpg" loading="lazy"><img
+                class="secondary-img" src="images/fit9hover.jpg" loading="lazy" onerror="this.src='images/fit9.jpg'">
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="social-under">
+      <a href="https://www.instagram.com/olaoluslawn/" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer-wrapper">
+    <div class="wrapper--full-padded">
+      <div class="footer__blocks">
+        <div class="footer__block">
+          <h3 class="footer__block__title">Shop</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="#">Caps</a></li>
+            <li><a href="#">T-shirts</a></li>
+            <li><a href="#">Shirts</a></li>
+            <li><a href="#">Jackets</a></li>
+            <li><a href="#">Jeans & Pants</a></li>
+          </ul>
+        </div>
+        <div class="footer__block">
+          <h3 class="footer__block__title">Help</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Shipping & handling</a></li>
+          </ul>
+        </div>
+        <div class="footer__block">
+          <h3 class="footer__block__title">Snatched</h3>
+          <ul class="footer__quicklinks">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+        <div class="footer__block">
+          <h3 class="footer__block__title">Join something real</h3>
+          <div class="rte">
+            <p>Be the first to get access to all new releases.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form"><input type="email" placeholder="Email" class="field"
+              required><button type="submit">Sign up.</button></form>
+        </div>
+      </div>
+      <div class="footer-copyright">© SNATCHED 2026. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      // Ghana Time
+      function updateGhanaDateTime() {
+        const span = document.getElementById('ghanaDateTime');
+        if (!span) return;
+        try {
+          const now = new Date();
+          const dateFormatter = new Intl.DateTimeFormat('en-GB', { timeZone: 'Africa/Accra', year: 'numeric', month: '2-digit', day: '2-digit' });
+          const timeFormatter = new Intl.DateTimeFormat('en-US', { timeZone: 'Africa/Accra', hour: '2-digit', minute: '2-digit', hour12: true });
+          span.textContent = `${dateFormatter.format(now)} ${timeFormatter.format(now).replace(/\s+/g, ' ').trim()} GMT`;
+        } catch (e) {
+          const now = new Date();
+          const day = now.getUTCDate().toString().padStart(2, '0');
+          const month = (now.getUTCMonth() + 1).toString().padStart(2, '0');
+          const year = now.getUTCFullYear();
+          let hours = now.getUTCHours();
+          const minutes = now.getUTCMinutes().toString().padStart(2, '0');
+          const ampm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12 || 12;
+          span.textContent = `${day}/${month}/${year} ${hours}:${minutes} ${ampm} GMT`;
+        }
+      }
+      updateGhanaDateTime();
+      setInterval(updateGhanaDateTime, 1000);
+
+      // Cart Functions
+      function getCartData() { try { const data = localStorage.getItem('snatched_cart'); return data ? JSON.parse(data) : []; } catch (e) { return []; } }
+      function saveCartData(cart) { localStorage.setItem('snatched_cart', JSON.stringify(cart)); }
+      function getCartCount() { return getCartData().reduce((t, i) => t + (parseInt(i.quantity) || 0), 0); }
+      function updateCartDisplay() { document.getElementById('cartBadge').textContent = getCartCount(); const mobileBadge = document.getElementById('mobileCartBadge'); if (mobileBadge) { mobileBadge.textContent = getCartCount(); } }
+
+      // Cart UI
+      const cartSidebar = document.getElementById('cartSidebar');
+      const cartOverlay = document.getElementById('cartOverlay');
+      const closeCartBtn = document.getElementById('closeCartBtn');
+      const cartNumberBtn = document.getElementById('cartNumber');
+      function toggleCart() { cartSidebar.classList.toggle('active'); cartOverlay.classList.toggle('active'); if (cartSidebar.classList.contains('active')) renderCartItems(); }
+      cartNumberBtn.addEventListener('click', toggleCart);
+      closeCartBtn.addEventListener('click', toggleCart);
+      cartOverlay.addEventListener('click', () => { cartSidebar.classList.remove('active'); cartOverlay.classList.remove('active'); });
+
+      function renderCartItems() {
+        const cart = getCartData();
+        const container = document.getElementById('cartItemsContainer');
+        const subtotalSpan = document.getElementById('cartSubtotal');
+        if (!container) return;
+        container.innerHTML = '';
+        let subtotal = 0;
+        if (cart.length === 0) container.innerHTML = '<p>Your bag is empty.</p>';
+        else {
+          cart.forEach((item, idx) => {
+            const itemTotal = (parseFloat(item.price) || 0) * (parseInt(item.quantity) || 1);
+            subtotal += itemTotal;
+            container.insertAdjacentHTML('beforeend', `<div class="cart-item"><img src="${item.image || 'images/fit1.jpg'}" class="cart-item-img"><div class="cart-item-details"><div class="cart-item-title">${item.name}</div><div class="cart-item-size">Size: ${item.size || 'OS'}</div><div class="cart-item-controls"><button class="qty-btn" onclick="updateItemQty(${idx}, -1)">-</button><span class="qty-val">${item.quantity}</span><button class="qty-btn" onclick="updateItemQty(${idx}, 1)">+</button><button class="remove-btn" onclick="removeCartItem(${idx})">Remove</button></div><div class="cart-item-price">GH₵${itemTotal.toFixed(2)}</div></div></div>`);
+          });
+        }
+        subtotalSpan.textContent = `GH₵${subtotal.toFixed(2)}`;
+      }
+
+      window.updateItemQty = function (idx, delta) { const cart = getCartData(); if (cart[idx]) { cart[idx].quantity += delta; if (cart[idx].quantity <= 0) cart.splice(idx, 1); saveCartData(cart); renderCartItems(); updateCartDisplay(); } };
+      window.removeCartItem = function (idx) { const cart = getCartData(); cart.splice(idx, 1); saveCartData(cart); renderCartItems(); updateCartDisplay(); };
+      updateCartDisplay();
+
+      // Hamburger Menu
+      const hamburger = document.getElementById('hamburgerMenu');
+      const sidebar = document.getElementById('sidebarNav');
+      const overlay = document.getElementById('overlay');
+      function toggleMenu() { hamburger.classList.toggle('active'); sidebar.classList.toggle('active'); overlay.classList.toggle('active'); }
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+
+      // Search Dropdown
+      const searchBtn = document.getElementById('searchBtn');
+      const searchDropdown = document.getElementById('searchDropdown');
+      const searchInput = document.getElementById('searchInput');
+      const productItems = document.querySelectorAll('.product-item');
+      searchBtn.addEventListener('click', (e) => { e.stopPropagation(); searchDropdown.classList.toggle('active'); if (searchDropdown.classList.contains('active')) searchInput.focus(); });
+      searchInput.addEventListener('input', (e) => { const query = e.target.value.toLowerCase(); productItems.forEach(item => { const name = (item.getAttribute('data-name') || '').toLowerCase(); item.style.display = name.includes(query) ? 'block' : 'none'; }); });
+
+      document.addEventListener('click', () => { searchDropdown.classList.remove('active'); });
+
+      // Newsletter
+      document.getElementById('newsletter-form')?.addEventListener('submit', (e) => { e.preventDefault(); const email = e.target.querySelector('input').value; if (email) alert(`Thanks for subscribing! (${email})`); e.target.reset(); });
+
+      // Mobile Menu Listeners
+      const mobileHamburger = document.getElementById('mobileHamburger');
+      if (mobileHamburger) {
+        mobileHamburger.addEventListener('click', function () {
+          this.classList.toggle('active');
+          sidebar.classList.toggle('active');
+          overlay.classList.toggle('active');
+        });
+      }
+
+      const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+      if (mobileSearchBtn) {
+        mobileSearchBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          searchDropdown.classList.toggle('active');
+          filterDropdown.classList.remove('active');
+          userDropdown.classList.remove('active');
+          if (searchDropdown.classList.contains('active')) searchInput.focus();
+        });
+      }
+
+      const mobileCartBtn = document.getElementById('mobileCartBtn');
+      if (mobileCartBtn) {
+        mobileCartBtn.addEventListener('click', toggleCart);
+      }
+
+      const mobileUserBtn = document.getElementById('mobileUserBtn');
+      if (mobileUserBtn) {
+        mobileUserBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          userDropdown.classList.toggle('active');
+          searchDropdown.classList.remove('active');
+          filterDropdown.classList.remove('active');
+        });
+      }
+    })();
+
+    // Wishlist Functions
+    function getWishlist() { try { const data = localStorage.getItem('snatched_wishlist'); return data ? JSON.parse(data) : []; } catch (e) { return []; } }
+    function saveWishlist(wishlist) { localStorage.setItem('snatched_wishlist', JSON.stringify(wishlist)); }
+    function updateWishlistHearts() {
+      const wishlist = getWishlist();
+      document.querySelectorAll('.product-item').forEach(item => {
+        const id = parseInt(item.getAttribute('data-id'));
+        const heartContainer = item.querySelector('.product-wishlist-heart');
+        if (heartContainer && wishlist.includes(id)) {
+          heartContainer.classList.add('active');
+        } else if (heartContainer) {
+          heartContainer.classList.remove('active');
+        }
+      });
+    }
+    function toggleWishlist(event, id, name, price, image) {
+      if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+      let wishlist = getWishlist();
+      const index = wishlist.indexOf(id);
+      if (index === -1) {
+        wishlist.push(id);
+        showToast('Added to wishlist!');
+      } else {
+        wishlist.splice(index, 1);
+        showToast('Removed from wishlist');
+      }
+      saveWishlist(wishlist);
+      updateWishlistHearts();
+      if (typeof renderWishlistSidebar === 'function') {
+        renderWishlistSidebar();
+      }
+    }
+
+    function toggleWishlistSidebar() {
+      const sidebar = document.getElementById('wishlistSidebar');
+      const overlay = document.getElementById('wishlistOverlay');
+      if (sidebar && overlay) {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+        if (sidebar.classList.contains('active')) {
+          renderWishlistSidebar();
+          // Drop dropdowns or menus if open
+          const nav = document.getElementById('sidebarNav');
+          if (nav) nav.classList.remove('active');
+          const mobileOverlay = document.getElementById('overlay');
+          if (mobileOverlay) mobileOverlay.classList.remove('active');
+          const mobileHamburger = document.getElementById('mobileHamburger');
+          if (mobileHamburger) mobileHamburger.classList.remove('active');
+        }
+      }
+    }
+
+    function renderWishlistSidebar() {
+      const wishlist = getWishlist();
+      const container = document.getElementById('wishlistItemsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      if (wishlist.length === 0) {
+        container.innerHTML = '<p>Your wishlist is empty.</p>';
+      } else {
+        // Collect specific product data straight from the current view dynamically
+        const productData = {};
+        document.querySelectorAll('.product-item').forEach(item => {
+          productData[parseInt(item.getAttribute('data-id'))] = {
+            name: item.getAttribute('data-name'),
+            price: item.getAttribute('data-price'),
+            image: item.getAttribute('data-image')
+          };
+        });
+
+        wishlist.forEach((id) => {
+          const p = productData[id];
+          if (p) {
+            container.insertAdjacentHTML('beforeend', `
+          <div class="cart-item" style="gap: 15px; margin-bottom: 24px; align-items: center;">
+            <img src="${p.image}" class="cart-item-img" style="border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <div class="cart-item-details" style="justify-content: space-between; height: 100px; padding: 2px 0;">
+              <div>
+                <div class="cart-item-title" style="margin-bottom: 4px; font-size: 0.9rem; line-height: 1.2;">${p.name}</div>
+                <div class="cart-item-price" style="font-size: 0.85rem; color: #555; align-self: flex-start; font-weight: 400;">GH₵${parseFloat(p.price).toFixed(2)}</div>
+              </div>
+              
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-right: 5px;">
+                <button onclick="addToBagFromWishlist(${id}, '${p.name}', ${p.price}, '${p.image}')" onmouseover="this.style.background='#e78ec4'" onmouseout="this.style.background='#111'" style="background:#111; color:white; border:none; padding:8px 16px; cursor:pointer; font-family:inherit; font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.8px; border-radius:2px; transition: background 0.2s ease;">Add to Bag</button>
+                <button onclick="toggleWishlist(event, ${id}, '${p.name}', ${p.price}, '${p.image}')" onmouseover="this.style.color='#111'" onmouseout="this.style.color='#999'" style="font-size:0.7rem; text-transform:uppercase; letter-spacing:0.05em; color:#999; border:none; background:none; cursor:pointer; text-decoration: underline; transition: color 0.2s ease;">Remove</button>
+              </div>
+            </div>
+          </div>
+        `);
+          }
+        });
+      }
+    }
+
+    window.addToBagFromWishlist = function (id, name, price, image) {
+      const cart = getCartData();
+      const existing = cart.find(i => i.id === id && i.size === 'OS');
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ id, name, price, image, size: 'OS', quantity: 1 });
+      }
+      saveCartData(cart);
+      if (typeof updateCartDisplay === 'function') updateCartDisplay();
+      if (typeof renderCartItems === 'function') renderCartItems();
+      showToast('Added to bag!');
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const closeWishlistBtn = document.getElementById('closeWishlistBtn');
+      const wishlistOverlay = document.getElementById('wishlistOverlay');
+      if (closeWishlistBtn) closeWishlistBtn.addEventListener('click', toggleWishlistSidebar);
+      if (wishlistOverlay) wishlistOverlay.addEventListener('click', toggleWishlistSidebar);
+    });
+    function showToast(msg) {
+      let toast = document.getElementById('wishlistToast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'wishlistToast';
+        toast.style.cssText = 'position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#1a1a1a; color:white; padding:12px 24px; border-radius:8px; z-index:9999; font-size:0.85rem; opacity:0; transition:opacity 0.3s; pointer-events:none;';
+        document.body.appendChild(toast);
+      }
+      toast.textContent = msg;
+      toast.style.opacity = '1';
+      setTimeout(() => { toast.style.opacity = '0'; }, 2000);
+    }
+    updateWishlistHearts();
+
+  </script>
+
+</body>
+
+</html>

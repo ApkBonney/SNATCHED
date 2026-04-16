@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>SNATCHED — Contact</title>
+
+  <!-- DM SANS FONT - Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- PostHog Analytics -->
+  <script>
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + " (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonPropertiesForFlags".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_EME9M9cSy9FvfHvcx2gMPkp1H5Dj4YaKufPRsAyon8Tf', { api_host: 'https://us.i.posthog.com', person_profiles: 'identified_only' });
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* main container */
+    .snatched-container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Logo styling */
+    .logo {
+      margin-bottom: 2rem;
+      display: inline-block;
+    }
+
+    .logo img {
+      max-width: 400px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Time row */
+    .time-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0px;
+      margin-bottom: 2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e1e1e;
+      letter-spacing: 0.2px;
+    }
+
+    .datetime-text {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* GOOEY TEXT STYLES */
+    .typing-wrapper {
+      width: 100%;
+      height: 120px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .typing-message {
+      font-size: 4.5rem;
+      font-weight: 800;
+      color: #e78ec4;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: -2px;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+      user-select: none;
+    }
+
+    /* Accent Hamburger Menu Button */
+    .hamburger-menu {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1001;
+      cursor: pointer;
+      background: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f0f0f0;
+    }
+
+    .hamburger-menu:hover {
+      transform: scale(1.05);
+      background: #fef0f5;
+    }
+
+    .hamburger-menu span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: #e78ec4;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .hamburger-menu.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+      background: #e78ec4;
+    }
+
+    .hamburger-menu.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-menu.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+      background: #e78ec4;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar-nav {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background: #FFFFFF;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: left 0.3s ease;
+      padding: 80px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .sidebar-nav.active {
+      left: 0;
+    }
+
+    /* Sidebar logo styling */
+    .sidebar-logo {
+      text-align: center;
+      padding-bottom: 1rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid #f0f0f0;
+      width: 100%;
+    }
+
+    .sidebar-logo img {
+      max-width: 160px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Sidebar navigation links */
+    .sidebar-nav a {
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 1.1rem;
+      color: #000000;
+      transition: all 0.2s ease;
+      padding: 10px 20px;
+      display: inline-block;
+      text-align: center;
+      letter-spacing: 0.3px;
+      border: 2px solid transparent;
+      border-radius: 4px;
+      min-width: 160px;
+      background-color: transparent;
+    }
+
+    .sidebar-nav a:hover {
+      color: #FFFFFF;
+      background-color: #e78ec4;
+      border: 2px solid #e78ec4;
+      transform: scale(1.02);
+    }
+
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    /* Contact Form Section */
+    .contact-section {
+      width: 100%;
+      margin: 1rem 0 2rem 0;
+    }
+
+    .contact-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 2rem;
+      letter-spacing: 0.3px;
+      font-style: italic;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1e1e1e;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-group label .optional {
+      font-weight: normal;
+      color: #999;
+      font-size: 0.7rem;
+      text-transform: none;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      background: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #e78ec4;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .error-message {
+      color: #ff0000;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      display: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .form-group.error input,
+    .form-group.error textarea {
+      border-color: #ff0000;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .back-home-btn,
+    .submit-btn {
+      background: #e78ec4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      min-width: 120px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .back-home-btn:hover,
+    .submit-btn:hover {
+      background: #e78ec4;
+      transform: translateY(-2px);
+    }
+
+    .back-home-btn {
+      background: transparent;
+      color: #e78ec4;
+      border: 1px solid #e78ec4;
+    }
+
+    .back-home-btn:hover {
+      background: #e78ec4;
+      color: white;
+    }
+
+    /* Success Message */
+    .success-message {
+      text-align: center;
+      padding: 2rem;
+      background: #f8f8f8;
+      margin: 1rem 0;
+    }
+
+    .success-message p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: #1e1e1e;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Social */
+    .social-under {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .social-under a {
+      color: #000000;
+      font-size: 1.5rem;
+      transition: opacity 0.2s, transform 0.1s;
+      text-decoration: none;
+    }
+
+    .social-under a:hover {
+      color: #e78ec4;
+      opacity: 0.7;
+      transform: scale(0.98);
+    }
+
+    /* Diagonal resize handle */
+    .resize-handle {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      cursor: nw-resize;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      z-index: 1000;
+    }
+
+    .resize-handle:hover {
+      opacity: 1;
+    }
+
+    .resize-handle::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      letter-spacing: 0.3px;
+      font-style: italic;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      width: 100%;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1e1e1e;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-group label .optional {
+      font-weight: normal;
+      color: #999;
+      font-size: 0.7rem;
+      text-transform: none;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      background: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #e78ec4;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .error-message {
+      color: #ff0000;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      display: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .form-group.error input,
+    .form-group.error textarea {
+      border-color: #ff0000;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .back-home-btn,
+    .submit-btn {
+      background: #e78ec4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      min-width: 120px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .back-home-btn:hover,
+    .submit-btn:hover {
+      background: #e78ec4;
+      transform: translateY(-2px);
+    }
+
+    .back-home-btn {
+      background: transparent;
+      color: #e78ec4;
+      border: 1px solid #e78ec4;
+    }
+
+    .back-home-btn:hover {
+      background: #e78ec4;
+      color: white;
+    }
+
+    /* Success Message */
+    .success-message {
+      text-align: center;
+      padding: 2rem;
+      background: #f8f8f8;
+      margin: 1rem 0;
+    }
+
+    .success-message p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: #1e1e1e;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Social */
+    .social-under {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .social-under a {
+      color: #000000;
+      font-size: 1.5rem;
+      transition: opacity 0.2s, transform 0.1s;
+      text-decoration: none;
+    }
+
+    .social-under a:hover {
+      color: #e78ec4;
+      opacity: 0.7;
+      transform: scale(0.98);
+    }
+
+    /* Diagonal resize handle */
+    .resize-handle {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      cursor: nw-resize;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      z-index: 1000;
+    }
+
+    .resize-handle:hover {
+      opacity: 1;
+    }
+
+    .resize-handle::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 0 20px 20px;
+      border-color: transparent transparent #e78ec4 transparent;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .button-group {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .back-home-btn,
+      .submit-btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .typing-wrapper {
+        height: 80px;
+        margin-bottom: 0.5rem;
+      }
+
+      .typing-message {
+        font-size: 2.2rem;
+        letter-spacing: -1px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      body {
+        padding: 1.5rem;
+      }
+
+      .logo img {
+        max-width: 280px;
+      }
+
+      .time-row {
+        font-size: 0.8rem;
+      }
+
+      .datetime-text {
+        font-size: 0.8rem;
+      }
+
+      .contact-note {
+        font-size: 0.75rem;
+      }
+
+      .hamburger-menu {
+        top: 10px;
+        left: 10px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .hamburger-menu span {
+        width: 20px;
+        height: 2px;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Accent Hamburger Menu Button -->
+  <div class="hamburger-menu" id="hamburgerMenu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar-nav" id="sidebarNav">
+    <div class="sidebar-logo">
+      <img src="images/pinksnatchedlogo.png" alt="SNATCHED"
+        onerror="this.src='https://placehold.co/200x60/e78ec4/FFFFFF?text=SNATCHED'">
+    </div>
+    <a href="index.html">Home</a>
+    <a href="store.html">Store</a>
+    <a href="lookbook.html">Lookbook</a>
+    <a href="comingsoon.html">Coming soon</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay"></div>
+
+  <div class="snatched-container">
+    <!-- Logo -->
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/pinksnatchedlogo.png" alt="Snatched"
+          onerror="this.src='https://placehold.co/400x120/e78ec4/FFFFFF?text=SNATCHED'">
+      </a>
+    </div>
+
+    <!-- Time row -->
+    <div class="time-row">
+      <span class="datetime-text" id="ghanaDateTime">--/--/---- --:-- -- GMT</span>
+    </div>
+
+    <!-- GOOEY ANIMATION -->
+    <svg class="absolute h-0 w-0" aria-hidden="true" focusable="false" style="position: absolute; height: 0; width: 0;">
+      <defs>
+        <filter id="threshold">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 255 -140" />
+        </filter>
+      </defs>
+    </svg>
+    <div class="typing-wrapper" style="filter: url(#threshold);">
+      <span class="typing-message" id="text1"></span>
+      <span class="typing-message" id="text2"></span>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="contact-section" id="contactSection">
+      <div class="contact-note">
+        Allow 3-5 business days for a response to your inquiry.
+      </div>
+      <form class="contact-form" id="contactForm">
+        <!-- First Name and Last Name row -->
+        <div class="form-row">
+          <div class="form-group" id="firstNameGroup">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" name="firstName">
+            <div class="error-message" id="firstNameError">Please fill out this field.</div>
+          </div>
+          <div class="form-group" id="lastNameGroup">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" name="lastName">
+            <div class="error-message" id="lastNameError">Please fill out this field.</div>
+          </div>
+        </div>
+
+        <!-- Email Address and Order Number row - Order Number is OPTIONAL -->
+        <div class="form-row">
+          <div class="form-group" id="emailGroup">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email">
+            <div class="error-message" id="emailError">Please fill out this field.</div>
+          </div>
+          <div class="form-group" id="orderGroup">
+            <label for="orderNumber">Order Number <span class="optional">(optional)</span></label>
+            <input type="text" id="orderNumber" name="orderNumber">
+            <div class="error-message" id="orderError">Please fill out this field.</div>
+          </div>
+        </div>
+
+        <!-- Subject -->
+        <div class="form-group" id="subjectGroup">
+          <label for="subject">Subject *</label>
+          <input type="text" id="subject" name="subject" placeholder="e.g., Order Question, General Inquiry, etc.">
+          <div class="error-message" id="subjectError">Please fill out this field.</div>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group" id="messageGroup">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message"></textarea>
+          <div class="error-message" id="messageError">Please fill out this field.</div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-group">
+          <a href="index.html" class="back-home-btn">Back Home</a>
+          <button type="submit" class="submit-btn">Send</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message hidden" id="successMessage">
+      <p>Thank you! Your submission has been received!</p>
+      <a href="index.html" class="back-home-btn">Back Home</a>
+    </div>
+
+    <!-- Social -->
+    <div class="social-under">
+      <a href="https://www.instagram.com/olaoluslawn/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // Ghana time update
+      function updateGhanaDateTime() {
+        const span = document.getElementById('ghanaDateTime');
+        if (!span) return;
+        try {
+          const now = new Date();
+          const dateFormatter = new Intl.DateTimeFormat('en-GB', {
+            timeZone: 'Africa/Accra',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit'
+          });
+          const timeFormatter = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Africa/Accra',
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: true
+          });
+          const formattedDate = dateFormatter.format(now);
+          let formattedTime = timeFormatter.format(now).replace(/\s+/g, ' ').trim();
+          span.textContent = `${formattedDate} ${formattedTime} GMT`;
+        } catch (e) {
+          const now = new Date();
+          const day = now.getUTCDate().toString().padStart(2, '0');
+          const month = (now.getUTCMonth() + 1).toString().padStart(2, '0');
+          const year = now.getUTCFullYear();
+          let hours = now.getUTCHours();
+          const minutes = now.getUTCMinutes().toString().padStart(2, '0');
+          const ampm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12 || 12;
+          span.textContent = `${day}/${month}/${year} ${hours}:${minutes} ${ampm} GMT`;
+        }
+      }
+      updateGhanaDateTime();
+      setInterval(updateGhanaDateTime, 1000);
+
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburgerMenu');
+      const sidebar = document.getElementById('sidebarNav');
+      const overlay = document.getElementById('overlay');
+
+      function toggleMenu() {
+        hamburger.classList.toggle('active');
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+      }
+
+      hamburger.addEventListener('click', toggleMenu);
+      overlay.addEventListener('click', toggleMenu);
+
+      // ============================================
+      // GOOEY TEXT ANIMATION
+      // ============================================
+
+      const messages = [
+        "How may I help you today?",
+        "Got a question about your order?",
+        "We are here for you :)",
+        "Ask us anything about SNATCHED?",
+        "Want to collaborate? Let us know!"
+      ];
+
+      const text1 = document.getElementById('text1');
+      const text2 = document.getElementById('text2');
+
+      const morphTime = 1;
+      const cooldownTime = 1.5;
+
+      let textIndex = messages.length - 1;
+      let time = new Date();
+      let morph = 0;
+      let cooldown = cooldownTime;
+      let gooeyAnimationId;
+
+      if (text1 && text2) {
+        text1.textContent = messages[textIndex % messages.length];
+        text2.textContent = messages[(textIndex + 1) % messages.length];
+
+        function setMorph(fraction) {
+          text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+          text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+          fraction = 1 - fraction;
+          text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+          text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+        }
+
+        function doCooldown() {
+          morph = 0;
+          text2.style.filter = "";
+          text2.style.opacity = "100%";
+          text1.style.filter = "";
+          text1.style.opacity = "0%";
+        }
+
+        function doMorph() {
+          morph -= cooldown;
+          cooldown = 0;
+          let fraction = morph / morphTime;
+
+          if (fraction > 1) {
+            cooldown = cooldownTime;
+            fraction = 1;
+          }
+
+          setMorph(fraction);
+        }
+
+        function animate() {
+          gooeyAnimationId = requestAnimationFrame(animate);
+          const newTime = new Date();
+          const shouldIncrementIndex = cooldown > 0;
+          const dt = (newTime.getTime() - time.getTime()) / 1000;
+          time = newTime;
+
+          cooldown -= dt;
+
+          if (cooldown <= 0) {
+            if (shouldIncrementIndex) {
+              textIndex = (textIndex + 1) % messages.length;
+              text1.textContent = messages[textIndex % messages.length];
+              text2.textContent = messages[(textIndex + 1) % messages.length];
+            }
+            doMorph();
+          } else {
+            doCooldown();
+          }
+        }
+
+        animate();
+      }
+
+      // Form validation - ORDER NUMBER IS NOW OPTIONAL
+      const contactForm = document.getElementById('contactForm');
+      const contactSection = document.getElementById('contactSection');
+      const successMsg = document.getElementById('successMessage');
+
+      function validateField(fieldId, errorId, value, isRequired = true) {
+        const fieldGroup = document.getElementById(fieldId);
+        const errorElement = document.getElementById(errorId);
+
+        // If field is not required and empty, it's valid
+        if (!isRequired && (!value || value.trim() === '')) {
+          fieldGroup.classList.remove('error');
+          errorElement.classList.remove('show');
+          return true;
+        }
+
+        if (!value || value.trim() === '') {
+          fieldGroup.classList.add('error');
+          errorElement.classList.add('show');
+          return false;
+        } else {
+          fieldGroup.classList.remove('error');
+          errorElement.classList.remove('show');
+          return true;
+        }
+      }
+
+      function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+
+          const firstName = document.getElementById('firstName').value;
+          const lastName = document.getElementById('lastName').value;
+          const email = document.getElementById('email').value;
+          const orderNumber = document.getElementById('orderNumber').value;
+          const subject = document.getElementById('subject').value;
+          const message = document.getElementById('message').value;
+
+          let isValid = true;
+
+          // Required fields
+          if (!validateField('firstNameGroup', 'firstNameError', firstName, true)) isValid = false;
+          if (!validateField('lastNameGroup', 'lastNameError', lastName, true)) isValid = false;
+          if (!validateField('subjectGroup', 'subjectError', subject, true)) isValid = false;
+          if (!validateField('messageGroup', 'messageError', message, true)) isValid = false;
+
+          // Email validation
+          if (!validateField('emailGroup', 'emailError', email, true)) {
+            isValid = false;
+          } else if (!validateEmail(email)) {
+            const emailGroup = document.getElementById('emailGroup');
+            const emailError = document.getElementById('emailError');
+            emailGroup.classList.add('error');
+            emailError.textContent = 'Please enter a valid email address.';
+            emailError.classList.add('show');
+            isValid = false;
+          }
+
+          // Order number is OPTIONAL - no validation needed
+
+          if (isValid) {
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            fetch('/api/contact', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ firstName, lastName, email, orderNumber, subject, message })
+            })
+              .then(res => res.json())
+              .then(data => {
+                if (data.success) {
+                  // Track event in PostHog
+                  if (typeof posthog !== 'undefined') {
+                    posthog.capture('contact_form_submitted', { email, subject });
+                  }
+                  // Stop gooey animation and show thank you
+                  if (typeof gooeyAnimationId !== 'undefined') {
+                    cancelAnimationFrame(gooeyAnimationId);
+                  }
+                  if (text1) {
+                    text1.style.filter = "";
+                    text1.style.opacity = "100%";
+                    text1.textContent = "THANK YOU";
+                  }
+                  if (text2) {
+                    text2.style.opacity = "0%";
+                  }
+
+                  contactSection.classList.add('hidden');
+                  successMsg.classList.remove('hidden');
+                  contactForm.reset();
+
+                  document.querySelectorAll('.form-group').forEach(group => group.classList.remove('error'));
+                  document.querySelectorAll('.error-message').forEach(error => error.classList.remove('show'));
+                } else {
+                  throw new Error(data.error || 'Submission failed');
+                }
+              })
+              .catch(err => {
+                console.error('Contact form error:', err);
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                alert('Something went wrong. Please try again.');
+              });
+          }
+        });
+      }
+
+      // Real-time validation for required fields only
+      const requiredFields = ['firstName', 'lastName', 'email', 'subject', 'message'];
+      requiredFields.forEach(field => {
+        const input = document.getElementById(field);
+        if (input) {
+          input.addEventListener('input', function () {
+            const groupId = field + 'Group';
+            const errorId = field + 'Error';
+            if (this.value.trim() !== '') {
+              document.getElementById(groupId)?.classList.remove('error');
+              document.getElementById(errorId)?.classList.remove('show');
+            }
+          });
+        }
+      });
+
+      // Email specific validation
+      const emailInput = document.getElementById('email');
+      if (emailInput) {
+        emailInput.addEventListener('blur', function () {
+          const email = this.value;
+          const emailGroup = document.getElementById('emailGroup');
+          const emailError = document.getElementById('emailError');
+
+          if (email.trim() !== '' && !validateEmail(email)) {
+            emailGroup.classList.add('error');
+            emailError.textContent = 'Please enter a valid email address.';
+            emailError.classList.add('show');
+          } else if (email.trim() !== '' && validateEmail(email)) {
+            emailGroup.classList.remove('error');
+            emailError.classList.remove('show');
+          }
+        });
+      }
+
+    })();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "snatched",
+  "version": "1.0.0",
+  "description": "SNATCHED clothing storefront",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "resend": "^3.2.0"
+  },
+  "devDependencies": {
+    "vercel": "^51.2.0"
+  }
+}
