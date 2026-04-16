@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed — SNATCHED</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #fff;
+            color: #1a1a1a;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #e78ec4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 40px;
+            animation: scaleUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes scaleUp {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        h1 {
+            font-weight: 900;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin: 0 0 10px;
+            text-transform: uppercase;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .order-card {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        .order-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        .order-row:last-child {
+            margin-bottom: 0;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+            font-weight: 700;
+        }
+        .btn {
+            display: inline-block;
+            background: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+        }
+        .btn:hover {
+            background: #e78ec4;
+            transform: translateY(-2px);
+        }
+        .confetti {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <h1>Secured.</h1>
+        <p>Thank you for shopping with SNATCHED. Your order has been placed and is being processed.</p>
+        
+        <div class="order-card">
+            <div class="order-row">
+                <span>Order Reference</span>
+                <span id="orderRef" style="color:#e78ec4; font-weight:700;">#-------</span>
+            </div>
+            <div class="order-row">
+                <span>Customer</span>
+                <span id="custName">Guest</span>
+            </div>
+            <div class="order-row">
+                <span>Total Paid</span>
+                <span id="orderTot">GH₵ 0.00</span>
+            </div>
+        </div>
+
+        <a href="index.html" class="btn">Return to Home</a>
+        <p style="font-size: 0.7rem; margin-top: 40px;">Check your inbox for a confirmation email shortly.</p>
+    </div>
+
+    <script>
+        // Extract data from URL params
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('orderRef').textContent = '#' + (params.get('orderId') || 'SN' + Date.now().toString().slice(-6));
+        document.getElementById('custName').textContent = params.get('name') || 'Valued Customer';
+        document.getElementById('orderTot').textContent = 'GH₵ ' + (params.get('total') || '0.00');
+
+        // Clear local cart just in case
+        localStorage.removeItem('snatched_cart');
+    </script>
+</body>
+</html>
